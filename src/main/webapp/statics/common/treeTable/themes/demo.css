@@ -1,0 +1,8 @@
+table thead {
+  font-size: 13px;
+  font-weight: bold;
+}
+table tbody tr .menuName{
+  font-size: 13px;
+  font-weight: bold;
+}

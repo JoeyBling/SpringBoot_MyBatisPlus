@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wstro.dao.SysRoleDao">
+
+	<select id="queryList" resultType="SysRoleEntity">
+		select * from sys_role
+		<where>
+			<if test="roleName != null and roleName.trim() != ''">
+				and `role_name` like concat('%',#{roleName},'%')
+			</if>
+		</where>
+		order by role_id asc
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+
+	<update id="updateNoMapper" parameterType="SysRoleEntity">
+		update sys_role
+		<set>
+			<if test="roleName != null">`role_name` = #{roleName}, </if>
+			<if test="remark != null">`remark` = #{remark}</if>
+		</set>
+		where role_id = #{roleId}
+	</update>
+
+	<delete id="deleteBatch">
+		delete from sys_role where role_id in
+		<foreach item="roleIds" collection="array" open="(" separator=","
+			close=")">
+			#{roleIds}
+		</foreach>
+		;
+		delete from sys_role_menu where role_id in
+		<foreach item="roleIds" collection="array" open="(" separator=","
+			close=")">
+			#{roleIds}
+		</foreach>
+		;
+		delete from sys_user_role where role_id in
+		<foreach item="roleIds" collection="array" open="(" separator=","
+			close=")">
+			#{roleIds}
+		</foreach>
+	</delete>
+
+
+</mapper>

@@ -1,7 +1,3 @@
-﻿#SpringBoot集成MyBatisPlus
-SpringBoot集成MyBatisPlus
-集成Shiro  可以快速开发
-
 数据库文件: /sql/wstro.sql  直接运行mysql
 项目使用技术:SpringBoot Spring SpringMVC MyBatis MyBatisPlus Freemaker ApacheShiro 数据库:MySql
 部署:
