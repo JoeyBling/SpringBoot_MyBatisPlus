@@ -25,12 +25,12 @@
                   	 				[@shiro.hasPermission name="sys:user:save"]
                                         <button type="button" style="margin-right:10px;" class="btn btn-default"
                                                 title="创建管理员" onclick="add($('#showHandle'))"><i
-                                                class="glyphicon glyphicon-plus"></i></button>
+                                                class="glyphicon glyphicon-plus"></i> 创建管理员</button>
                                     [/@shiro.hasPermission]
                   	 				[@shiro.hasPermission name="sys:user:delete"]
                                         <button type="button" style="margin-right:10px;" class="btn btn-danger"
                                                 title="批量删除管理员" onclick="del($('#table'))"><i
-                                                class="glyphicon glyphicon-remove"></i></button>
+                                                class="glyphicon glyphicon-remove"></i> 批量删除管理员</button>
                                     [/@shiro.hasPermission]
                                     </div>
                                     <table id="table"

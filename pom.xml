@@ -218,8 +218,21 @@
 					<target>${maven.compiler.source}</target>
 					<encoding>UTF-8</encoding>
 					<compilerArguments>
-						<extdirs>src/main/webapp/WEB-INF/lib</extdirs>
+						<extdirs>${project.basedir}/src/main/webapp/WEB-INF/lib</extdirs>
 					</compilerArguments>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<configuration>
+					<!-- Tomcat启动 直接访问http://localhost:8080/ -->
+					<url>http://localhost:8080/manager/wstro</url>
+					<server>tomcat</server>
+					<username>joey</username>
+					<password>jay</password>
+					<path>/</path>
 				</configuration>
 			</plugin>
 

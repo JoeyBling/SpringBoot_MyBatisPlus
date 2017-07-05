@@ -24,12 +24,12 @@
                   	 				[@shiro.hasPermission name="sys:role:save"]
                                         <button type="button" style="margin-right:10px;" class="btn btn-default"
                                                 title="创建角色" onclick="add($('#showHandle'))"><i
-                                                class="glyphicon glyphicon-plus"></i></button>
+                                                class="glyphicon glyphicon-plus"></i> 创建角色</button>
                                     [/@shiro.hasPermission]
                   	 				[@shiro.hasPermission name="sys:role:delete"]
                                         <button type="button" style="margin-right:10px;" class="btn btn-danger"
                                                 title="批量删除角色" onclick="del($('#table'))"><i
-                                                class="glyphicon glyphicon-remove"></i></button>
+                                                class="glyphicon glyphicon-remove"></i> 批量删除角色</button>
                                     [/@shiro.hasPermission]
                                     </div>
                                     <table id="table"

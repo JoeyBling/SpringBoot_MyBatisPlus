@@ -7,8 +7,6 @@ import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
 import com.baomidou.mybatisplus.enums.IdType;
 
-import lombok.Data;
-
 /**
  * 角色与菜单对应关系
  * 
@@ -16,7 +14,6 @@ import lombok.Data;
  * @Email 2434387555@qq.com
  *
  */
-@Data
 @TableName("sys_role_menu")
 public class SysRoleMenuEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -35,5 +32,29 @@ public class SysRoleMenuEntity implements Serializable {
 	 */
 	@TableField
 	private Long menuId;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Long getRoleId() {
+		return roleId;
+	}
+
+	public void setRoleId(Long roleId) {
+		this.roleId = roleId;
+	}
+
+	public Long getMenuId() {
+		return menuId;
+	}
+
+	public void setMenuId(Long menuId) {
+		this.menuId = menuId;
+	}
 
 }

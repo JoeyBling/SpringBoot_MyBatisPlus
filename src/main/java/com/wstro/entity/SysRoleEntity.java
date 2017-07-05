@@ -8,8 +8,6 @@ import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
 import com.baomidou.mybatisplus.enums.IdType;
 
-import lombok.Data;
-
 /**
  * 角色
  * 
@@ -17,7 +15,6 @@ import lombok.Data;
  * @Email 2434387555@qq.com
  *
  */
-@Data
 @TableName("sys_role")
 public class SysRoleEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -48,5 +45,45 @@ public class SysRoleEntity implements Serializable {
 
 	@TableField(exist = false)
 	private List<Long> menuIdList;
+
+	public Long getRoleId() {
+		return roleId;
+	}
+
+	public void setRoleId(Long roleId) {
+		this.roleId = roleId;
+	}
+
+	public String getRoleName() {
+		return roleName;
+	}
+
+	public void setRoleName(String roleName) {
+		this.roleName = roleName;
+	}
+
+	public String getRemark() {
+		return remark;
+	}
+
+	public void setRemark(String remark) {
+		this.remark = remark;
+	}
+
+	public Long getCreateTime() {
+		return createTime;
+	}
+
+	public void setCreateTime(Long createTime) {
+		this.createTime = createTime;
+	}
+
+	public List<Long> getMenuIdList() {
+		return menuIdList;
+	}
+
+	public void setMenuIdList(List<Long> menuIdList) {
+		this.menuIdList = menuIdList;
+	}
 
 }

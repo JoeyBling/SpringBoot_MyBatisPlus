@@ -1,11 +1,33 @@
-﻿#SpringBoot集成MyBatisPlus
-SpringBoot集成MyBatisPlus
-集成Shiro  可以快速开发
-
 数据库文件: /sql/wstro.sql  直接运行mysql
-项目使用技术:SpringBoot Spring SpringMVC MyBatis MyBatisPlus Freemaker ApacheShiro 数据库:MySql
-部署:
-	application.properties更改指定部署模式还是开发模式 dev / prod  分别对应application-dev.properties  /  application-prod.properties
+
+
+启动说明:
+	项目依赖mysql、Redis服务。
+
+	启动命令:
+		(如果有问题。请尝试强制删除target目录下的所有文件)
+		mvn clean package -P build tomcat7:run-war-only -f pom.xml
+	
+	打包命令:
+		(如果有问题。请尝试强制删除target目录下的所有文件)
+		mvn clean package spring-boot:repackage
+		会在target目录生成wstro.war  直接部署Tomcat运行
+	
+	访问地址:
+			localhost:8080/admin
+			
+	注意：本项目使用的是  JDK1.8 
+
+
+项目使用技术:SpringBoot Spring SpringMVC MyBatis MyBatisPlus Freemaker ApacheShiro 
+
+数据库:MySql
+
+
+部署:application.properties更改指定部署模式还是开发模式 dev / prod  
+        分别对应application-dev.properties  /  application-prod.properties
+
+
 	修改dev / prod 文件 
 		SEO:
 			seo.author 作者

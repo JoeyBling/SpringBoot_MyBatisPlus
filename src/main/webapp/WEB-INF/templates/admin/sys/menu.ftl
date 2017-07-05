@@ -24,10 +24,10 @@
                 <div class="example">
                   <div id="toolbar" class="btn-group m-t-sm">
                   	 [@shiro.hasPermission name="sys:menu:save"]
-                     	<button type="button" style="margin-right:10px;" class="btn btn-default"  title="创建菜单" onclick="add($('#showHandle'))"> <i class="glyphicon glyphicon-plus"></i> </button>
+                     	<button type="button" style="margin-right:10px;" class="btn btn-default"  title="创建菜单" onclick="add($('#showHandle'))"> <i class="glyphicon glyphicon-plus"></i> 创建菜单 </button>
 	                 [/@shiro.hasPermission]
                   	 [@shiro.hasPermission name="sys:menu:delete"]
-                  	 	<button type="button" style="margin-right:10px;" class="btn btn-danger" title="批量删除菜单" onclick="del($('#table'))"> <i class="glyphicon glyphicon-remove"></i> </button>
+                  	 	<button type="button" style="margin-right:10px;" class="btn btn-danger" title="批量删除菜单" onclick="del($('#table'))"> <i class="glyphicon glyphicon-remove"></i> 批量删除菜单</button>
                   	 [/@shiro.hasPermission]
                   </div>
                   <table id="table"
