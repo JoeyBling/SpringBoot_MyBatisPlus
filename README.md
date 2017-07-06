@@ -1,4 +1,11 @@
 数据库文件: /sql/wstro.sql  直接运行mysql
+   			更改配置文件application-*.properties的数据库连接信息
+			spring.datasource.url
+			spring.datasource.username
+			spring.datasource.password
+			
+项目整合了多数据源,注解方法  @DataSource(这里写数据源名称) 如 DataSourceContextHolder.DATA_SOURCE_B 建议数据源名称都定义在此类中，方便维护
+						
 
 
 启动说明:

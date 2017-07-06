@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
+import org.springframework.context.annotation.ComponentScan;
 
 /**
  * SpringBoot
@@ -16,6 +17,7 @@ import org.springframework.boot.web.support.SpringBootServletInitializer;
  */
 @ServletComponentScan
 @SpringBootApplication
+@ComponentScan(basePackages = { "com.wstro" })
 public class App extends SpringBootServletInitializer {
 
 	@SuppressWarnings("static-access")
