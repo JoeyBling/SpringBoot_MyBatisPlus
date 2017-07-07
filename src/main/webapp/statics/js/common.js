@@ -273,9 +273,27 @@ function layer_show_url(title, url, w, h) {
 	});
 }
 
+/**
+ * bootstrapValidator
+ * 
+ * @param event
+ * @returns boolean
+ */
+function validateForm(event) {
+	$(event).data("bootstrapValidator").resetForm();
+	$(event).bootstrapValidator('validate');
+	return $(event).data('bootstrapValidator').isValid();
+}
+
 // BootStrapTable公用
 // 加载服务器数据之前的处理程序，可以用来格式化数据。参数：data为从服务器请求到的数据。
 function defaultBootstarpTableHandler(data) {
+	if (data.code != 0) {
+		layer.alert(data.msg, {
+			icon : 2
+		});
+		return;
+	}
 	return {
 		"total" : data.page.totalCount,// 总记录数
 		"rows" : data.page.list

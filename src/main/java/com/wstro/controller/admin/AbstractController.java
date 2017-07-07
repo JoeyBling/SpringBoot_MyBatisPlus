@@ -1,11 +1,15 @@
 package com.wstro.controller.admin;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.annotation.Resource;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.wstro.entity.SysUserEntity;
 import com.wstro.util.Constant;
 import com.wstro.util.EhcacheUtil;
@@ -53,11 +57,33 @@ abstract class AbstractController {
 	 *            JSONArray
 	 * @return Long[]
 	 */
-	public Long[] toArrays(JSONArray ja) {
+	protected Long[] toArrays(JSONArray ja) {
 		Long[] objs = new Long[ja.size()];
 		for (int i = 0; i < ja.size(); i++) {
 			objs[i] = Long.valueOf(ja.get(i).toString());
 		}
 		return objs;
+	}
+
+	/**
+	 * 根据JSON字符串返回对应的Value
+	 * 
+	 * @param search
+	 *            要解析Json的字符串
+	 * @param keyNames
+	 *            查询的Names
+	 * @return Map<String, T>
+	 */
+	@SuppressWarnings("unchecked")
+	protected <T> Map<String, T> parseObject(String search, String... keyNames) {
+		JSONObject parseObject = JSONArray.parseObject(search);
+		if (null != parseObject || null == keyNames) {
+			Map<String, T> map = new HashMap<String, T>();
+			for (String key : keyNames) {
+				map.put(key, (T) parseObject.get(key));
+			}
+			return map;
+		}
+		return null;
 	}
 }

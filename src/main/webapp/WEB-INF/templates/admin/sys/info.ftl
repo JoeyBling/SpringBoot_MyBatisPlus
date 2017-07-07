@@ -92,7 +92,7 @@
                                 <button type="button" class="btn btn-primary pull-left m-r-md" onclick="modify();">
                                     修改信息
                                 </button>
-                                <button type="submit" class="btn btn-success" onclick="save_info();"
+                                <button type="button" class="btn btn-success" onclick="save_info();"
                                         style="display: none;">保存修改
                                 </button>
                             </div>

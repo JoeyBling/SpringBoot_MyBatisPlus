@@ -36,18 +36,20 @@ function actionFormatter(value, row, index) {
 	} else if (null == data_update && null != data_delete) {
 		return [
 				'<a class="remove text-danger" href="javascript:void(0)" title="删除">',
-				'<i class="glyphicon glyphicon-remove"></i>', '</a>' ].join('');
+				'<i class="glyphicon glyphicon-remove"></i>删除', '</a>' ]
+				.join('');
 	} else if (null != data_update && null == data_delete) {
 		return [
 				'<a class="edit text-warning" href="javascript:void(0)" title="编辑">',
-				'<i class="glyphicon glyphicon-edit"></i>', '</a>' ].join('');
+				'<i class="glyphicon glyphicon-edit"></i>编辑', '</a>' ].join('');
 	} else {
 		return [
 				'<a class="edit m-r-sm text-warning" href="javascript:void(0)" title="编辑">',
-				'<i class="glyphicon glyphicon-edit"></i>',
+				'<i class="glyphicon glyphicon-edit"></i>编辑',
 				'</a>',
 				'<a class="remove text-danger" href="javascript:void(0)" title="删除">',
-				'<i class="glyphicon glyphicon-remove"></i>', '</a>' ].join('');
+				'<i class="glyphicon glyphicon-remove"></i>删除', '</a>' ]
+				.join('');
 	}
 }
 
@@ -96,6 +98,15 @@ function role_delete(index, value) {
 	});
 }
 
+/*
+ * 修改角色
+ */
+function role_update(index, value) {
+	$("#title").text("修改角色");
+	layer_show("修改角色", $("#showHandle"), 800, 500);
+	getMenuTree(value);
+}
+
 /**
  * 批量删除角色
  */
@@ -137,20 +148,16 @@ function del(tableName) {
 	});
 }
 
-/*
- * 修改角色
- */
-function role_update(index, value) {
-	$("#title").text("修改角色");
-	layer_show("修改角色", $("#showHandle"), 800, 500);
-	getMenuTree(value);
-}
-
 /**
  * 保存或更新
  */
 function saveOrUpdate(e) {// 获取选择的菜单
 	loadingButton($(e));
+
+	if (!validateForm($("#form"))) {
+		return false;
+	}
+
 	var roleId = $("input[name='roleId']").val();
 	roleId = roleId == "" ? null : roleId;
 	var roleName = $("input[name='roleName']").val();

@@ -6,6 +6,25 @@ function radio() {
 	bingICheckClick(); // 重新绑定事件
 }
 
+// 筛选数据
+function search() {
+	var params = $('#table').bootstrapTable('getOptions');
+	params.queryParams = function(params) {
+		// 定义参数
+		var search = {};
+		// 遍历form 组装json
+		$.each($("#searchform").serializeArray(), function(i, field) {
+			// 可以添加提交验证
+			search[field.name] = field.value;
+		});
+
+		// 参数转为json字符串，并赋给search变量 ,JSON.stringify <ie7不支持，有第三方解决插件
+		params.search = JSON.stringify(search);
+		return params;
+	}
+	$('#table').bootstrapTable('refresh', params);
+}
+
 // 图标
 function formatIcon(value, row, index) {
 	if (value == null) {
@@ -38,18 +57,20 @@ function actionFormatter(e, value, row, index) {
 	} else if (null == data_update && null != data_delete) {
 		return [
 				'<a class="remove text-danger" href="javascript:void(0)" title="删除">',
-				'<i class="glyphicon glyphicon-remove"></i>', '</a>' ].join('');
+				'<i class="glyphicon glyphicon-remove"></i>删除', '</a>' ]
+				.join('');
 	} else if (null != data_update && null == data_delete) {
 		return [
 				'<a class="edit text-warning" href="javascript:void(0)" title="编辑">',
-				'<i class="glyphicon glyphicon-edit"></i>', '</a>' ].join('');
+				'<i class="glyphicon glyphicon-edit"></i>编辑', '</a>' ].join('');
 	} else {
 		return [
 				'<a class="edit m-r-sm text-warning" href="javascript:void(0)" title="编辑">',
-				'<i class="glyphicon glyphicon-edit"></i>',
+				'<i class="glyphicon glyphicon-edit"></i>编辑',
 				'</a>',
 				'<a class="remove text-danger" href="javascript:void(0)" title="删除">',
-				'<i class="glyphicon glyphicon-remove"></i>', '</a>' ].join('');
+				'<i class="glyphicon glyphicon-remove"></i>删除', '</a>' ]
+				.join('');
 	}
 }
 
@@ -98,6 +119,44 @@ function menu_delete(index, value) {
 	});
 }
 
+/*
+ * 修改菜单
+ */
+function menu_update(index, value, row) {
+	$("#title").text("修改菜单");
+	$.get("menu/info/" + row.menuId, function(r) {
+		if (r.code === 0) {
+			$("input[name='menuId']").val(r.menu.menuId);
+			$("input[name='name']").val(r.menu.name);
+			$("input[name='parentName']").val(r.menu.parentName);
+			$("input[name='url']").val(r.menu.url);
+			$("input[name='perms']").val(r.menu.perms);
+			$("input[name='orderNum']").val(r.menu.orderNum);
+			$("input[name='icon']").val(r.menu.icon);
+			$("input[name='parentId']").val(r.menu.parentId);
+			$("input[name='type']").removeAttr("checked");
+			$("input[name='type'][value=" + r.menu.type + "]").prop("checked",
+					true);
+			radio(); // 要重新生成样式
+			getMenu(row.parentId);
+			if (r.menu.type == "0") {
+				checkRadio("catalog");
+			}
+			if (r.menu.type == "1") {
+				checkRadio("menu");
+			}
+			if (r.menu.type == "2") {
+				checkRadio("button");
+			}
+			layer_show("修改菜单", $("#showHandle"), 800, 500);
+		} else {
+			layer.alert(r.msg, {
+				icon : 2
+			});
+		}
+	});
+}
+
 /**
  * 批量删除菜单
  */
@@ -141,44 +200,6 @@ function del(tableName) {
 
 var parentName;
 var parentId;
-
-/*
- * 修改菜单
- */
-function menu_update(index, value, row) {
-	$("#title").text("修改菜单");
-	$.get("menu/info/" + row.menuId, function(r) {
-		if (r.code === 0) {
-			$("input[name='menuId']").val(r.menu.menuId);
-			$("input[name='name']").val(r.menu.name);
-			$("input[name='parentName']").val(r.menu.parentName);
-			$("input[name='url']").val(r.menu.url);
-			$("input[name='perms']").val(r.menu.perms);
-			$("input[name='orderNum']").val(r.menu.orderNum);
-			$("input[name='icon']").val(r.menu.icon);
-			$("input[name='parentId']").val(r.menu.parentId);
-			$("input[name='type']").removeAttr("checked");
-			$("input[name='type'][value=" + r.menu.type + "]").prop("checked",
-					true);
-			radio(); // 要重新生成样式
-			getMenu(row.parentId);
-			if (r.menu.type == "0") {
-				checkRadio("catalog");
-			}
-			if (r.menu.type == "1") {
-				checkRadio("menu");
-			}
-			if (r.menu.type == "2") {
-				checkRadio("button");
-			}
-			layer_show("修改菜单", $("#showHandle"), 800, 500);
-		} else {
-			layer.alert(r.msg, {
-				icon : 2
-			});
-		}
-	});
-}
 
 /**
  * 保存或更新

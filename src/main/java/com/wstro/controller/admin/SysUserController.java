@@ -3,8 +3,10 @@ package com.wstro.controller.admin;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.validation.Valid;
 
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -12,6 +14,7 @@ import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.crypto.hash.Sha256Hash;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -52,7 +55,14 @@ public class SysUserController extends AbstractController {
 	@RequiresPermissions("sys:user:list")
 	@ResponseBody
 	public R list(Integer offset, Integer limit, String sort, String order,
-			@RequestParam(name = "search", required = false) String userName) {
+			@RequestParam(name = "search", required = false) String search) {
+		String userName = null;
+		String email = null;
+		Map<String, String> searchList = parseObject(search, "q_userName", "q_email");
+		if (null != searchList) {
+			userName = searchList.get("q_userName");
+			email = searchList.get("q_email");
+		}
 		offset = (offset / limit) + 1;
 		Boolean flag = null; // 排序逻辑
 		if (StringUtils.isNoneBlank(order)) {
@@ -62,7 +72,7 @@ public class SysUserController extends AbstractController {
 				flag = false;
 			}
 		}
-		Page<SysUserEntity> adminList = sysUserService.queryListByPage(offset, limit, userName, sort, flag);
+		Page<SysUserEntity> adminList = sysUserService.queryListByPage(offset, limit, email, userName, sort, flag);
 		PageUtils pageUtil = new PageUtils(adminList.getRecords(), adminList.getTotal(), adminList.getSize(),
 				adminList.getCurrent());
 		return R.ok().put("page", pageUtil);
@@ -101,16 +111,17 @@ public class SysUserController extends AbstractController {
 	@RequestMapping("/save")
 	@ResponseBody
 	@RequiresPermissions("sys:user:save")
-	public R save(SysUserEntity user, @RequestParam("role") Long[] roles) throws Exception {
+	public R save(@RequestParam("role") Long[] roles, @Valid SysUserEntity user, BindingResult result)
+			throws Exception {
+		if (result.hasErrors()) { // 验证有误
+			return R.error(result.getFieldError().getDefaultMessage());
+		}
 		if (roles.length < 1) {
 			return R.error("请为用户赋予至少一个权限");
 		}
 		List<Long> roleIdList = new ArrayList<Long>();
 		Collections.addAll(roleIdList, roles);
 		user.setRoleIdList(roleIdList);
-		if (StringUtils.isBlank(user.getUsername())) {
-			return R.error("用户名不能为空");
-		}
 		if (StringUtils.isBlank(user.getPassword())) {
 			return R.error("密码不能为空");
 		}
@@ -141,7 +152,6 @@ public class SysUserController extends AbstractController {
 		if (StringUtils.isBlank(user.getUsername())) {
 			return R.error("用户名不能为空");
 		}
-
 		if (getAdminId().equals(user.getUserId())) {
 			if (user.getStatus().equals(0)) {
 				ShiroUtils.logout(); // 退出

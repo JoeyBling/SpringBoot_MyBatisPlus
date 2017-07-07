@@ -4,6 +4,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.apache.shiro.cache.ehcache.EhCacheManager;
+import org.apache.shiro.codec.Base64;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
@@ -152,6 +153,8 @@ public class ShiroConfiguration {
 		logger.info("ShiroConfiguration.rememberMeManager()");
 		CookieRememberMeManager cookieRememberMeManager = new CookieRememberMeManager();
 		cookieRememberMeManager.setCookie(rememberMeCookie());
+		byte[] cipherKey = Base64.decode("wGiHplamyXlVB11UXWol8g==");
+		cookieRememberMeManager.setCipherKey(cipherKey);
 		return cookieRememberMeManager;
 	}
 

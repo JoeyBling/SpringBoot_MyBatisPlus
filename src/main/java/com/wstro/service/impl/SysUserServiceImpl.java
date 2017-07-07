@@ -91,7 +91,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserDao, SysUserEntity> i
 	}
 
 	@Override
-	public Page<SysUserEntity> queryListByPage(Integer offset, Integer limit, String userName, String sort,
+	public Page<SysUserEntity> queryListByPage(Integer offset, Integer limit,String email, String userName, String sort,
 			Boolean order) {
 		Wrapper<SysUserEntity> wrapper = new EntityWrapper<SysUserEntity>();
 		if (StringUtils.isNoneBlank(sort) && null != order) {
@@ -99,6 +99,9 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserDao, SysUserEntity> i
 		}
 		if (StringUtils.isNoneBlank(userName)) {
 			wrapper.like("username", userName);
+		}
+		if (StringUtils.isNoneBlank(email)) {
+			wrapper.like("email", email);
 		}
 		Page<SysUserEntity> page = new Page<>(offset, limit);
 		return this.selectPage(page, wrapper);

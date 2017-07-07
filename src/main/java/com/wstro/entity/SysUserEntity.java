@@ -3,6 +3,10 @@ package com.wstro.entity;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotEmpty;
+
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
@@ -29,6 +33,7 @@ public class SysUserEntity implements Serializable {
 	 * 用户名
 	 */
 	@TableField
+	@NotEmpty(message = "用户名不能为空")
 	private String username;
 
 	/**
@@ -41,6 +46,7 @@ public class SysUserEntity implements Serializable {
 	 * 性别 0=保密/1=男/2=女
 	 */
 	@TableField
+	@NotNull(message = "性别不能为空")
 	private Integer sex;
 
 	/**
@@ -71,6 +77,7 @@ public class SysUserEntity implements Serializable {
 	 * 状态 0：禁用 1：正常
 	 */
 	@TableField
+	@NotNull(message = "状态不能为空")
 	private Integer status;
 
 	/**

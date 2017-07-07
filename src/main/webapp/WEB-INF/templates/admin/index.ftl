@@ -38,7 +38,7 @@
 	                
 	                [#if list.list??]
 			            	[#list list.list as children]
-				                    <li><a class="J_menuItem" href="${base}/admin/${children.url}"
+				                    <li><a class="J_menuItem" href="${base}/${children.url}"
 				                           data-index="${children_index}"><i class="${children.icon}"></i>${children.name}</a></li>
 			            	[/#list]
             		[/#if]

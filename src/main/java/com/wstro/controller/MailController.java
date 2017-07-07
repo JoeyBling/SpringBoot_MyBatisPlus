@@ -74,7 +74,7 @@ public class MailController extends AbstractController {
 		// 嵌入图片
 		FileSystemResource file = new FileSystemResource(
 				new File(request.getServletContext().getRealPath("/statics/images/kgc.jpg")));
-		//testphoto和img标签的src对应cid:
+		// testphoto和img标签的src对应cid:
 		helper.addInline("testphoto", file);
 
 		mailSender.send(mimeMessage);

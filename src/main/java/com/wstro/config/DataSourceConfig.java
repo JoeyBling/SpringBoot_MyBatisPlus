@@ -116,7 +116,7 @@ public class DataSourceConfig {
 		servletRegistrationBean.setServlet(new StatViewServlet());
 		servletRegistrationBean.addUrlMappings("/druid/*");
 		// 白名单：
-		servletRegistrationBean.addInitParameter("allow", "127.0.0.1");
+		//servletRegistrationBean.addInitParameter("allow", "127.0.0.1");
 		// IP黑名单 (存在共同时，deny优先于allow) : 如果满足deny的话提示:Sorry, you are not
 		// permitted to view this page.
 		// 登录查看信息的账号密码.
@@ -243,7 +243,7 @@ public class DataSourceConfig {
 		// 默认数据源
 		DataSource primaryDataSource = primaryDataSource();
 		// 第二个数据源
-		// DataSource dataSource2 = dataSource2();
+		//DataSource dataSource2 = dataSource2();
 		DynamicDataSource dataSource = new DynamicDataSource();
 		// 这里设置默认数据源
 		dataSource.setDefaultTargetDataSource(primaryDataSource);
@@ -251,8 +251,7 @@ public class DataSourceConfig {
 		// 多数据源(如果使用一个的话就配置一个)
 		// 要添加的话在写一个获取数据源的方法
 		targetDataSources.put(DataSourceContextHolder.PRIMARY_DATA_SOURCE, primaryDataSource);
-		// targetDataSources.put(DataSourceContextHolder.DATA_SOURCE_B,
-		// dataSource2);
+		//targetDataSources.put(DataSourceContextHolder.DATA_SOURCE_B, dataSource2);
 		dataSource.setTargetDataSources(targetDataSources);
 		return dataSource;
 	}

@@ -12,6 +12,7 @@
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
                     <h5>角色列表</h5>
+
                     <div class="ibox-tools"><a class="collapse-link"><i class="fa fa-chevron-up"></i></a> <a
                             class="close-link"><i class="fa fa-times"></i></a></div>
                 </div>
@@ -21,16 +22,18 @@
                             <div class="example-wrap">
                                 <div class="example">
                                     <div id="toolbar" class="btn-group m-t-sm">
-                  	 				[@shiro.hasPermission name="sys:role:save"]
-                                        <button type="button" style="margin-right:10px;" class="btn btn-default"
+                                        [@shiro.hasPermission name="sys:role:save"]
+                                        <button type="button" style="margin-right:10px;" class="btn btn-primary"
                                                 title="创建角色" onclick="add($('#showHandle'))"><i
-                                                class="glyphicon glyphicon-plus"></i> 创建角色</button>
-                                    [/@shiro.hasPermission]
-                  	 				[@shiro.hasPermission name="sys:role:delete"]
+                                                class="glyphicon glyphicon-plus"></i> 创建角色
+                                        </button>
+                                        [/@shiro.hasPermission]
+                                        [@shiro.hasPermission name="sys:role:delete"]
                                         <button type="button" style="margin-right:10px;" class="btn btn-danger"
                                                 title="批量删除角色" onclick="del($('#table'))"><i
-                                                class="glyphicon glyphicon-remove"></i> 批量删除角色</button>
-                                    [/@shiro.hasPermission]
+                                                class="glyphicon glyphicon-remove"></i> 批量删除角色
+                                        </button>
+                                        [/@shiro.hasPermission]
                                     </div>
                                     <table id="table"
                                            data-toggle="table"
@@ -73,9 +76,9 @@
                                     </tr>
                                     </thead>
                                     </table>
-                   <input type='hidden' id="handle" 
-                        [@shiro.hasPermission name="sys:role:update"] data-update="true"[/@shiro.hasPermission]
-                        [@shiro.hasPermission name="sys:role:delete"] data-delete="true"[/@shiro.hasPermission]/>
+                                    <input type='hidden' id="handle"
+                                         [@shiro.hasPermission name="sys:role:update" ] data-update="true" [/@shiro.hasPermission]
+                                         [@shiro.hasPermission name="sys:role:delete"]  data-delete="true"[/@shiro.hasPermission]/>
                                 </div>
                             </div>
                         </div>
@@ -97,8 +100,10 @@
             <div class="ibox-content form-horizontal">
                 <form id="form">
                     <input type='hidden' name="roleId"/>
+
                     <div class="form-group m-t">
                         <label class="col-sm-2 col-xs-offset-1 control-label">角色名称：</label>
+
                         <div class="col-sm-6">
                             <input type="text" maxlength="10" class="form-control" name="roleName">
                         </div>
@@ -106,6 +111,7 @@
                     <div class="hr-line-dashed"></div>
                     <div class="form-group">
                         <label class="col-sm-2 col-xs-offset-1 control-label">备注：</label>
+
                         <div class="col-sm-6">
                             <input type="text" class="form-control" name="remark">
                         </div>
@@ -113,6 +119,7 @@
                     <div class="hr-line-dashed"></div>
                     <div class="form-group">
                         <label class="col-sm-2 col-xs-offset-1 control-label">授权：</label>
+
                         <div class="col-sm-6">
                             <ul id="menuTree" class="ztree"></ul>
                         </div>

@@ -86,6 +86,8 @@ public interface SysUserService extends IService<SysUserEntity> {
 	 *            开始
 	 * @param limit
 	 *            条数
+	 * @param email
+	 *            邮箱
 	 * @param userName
 	 *            管理员名称
 	 * @param sort
@@ -94,5 +96,6 @@ public interface SysUserService extends IService<SysUserEntity> {
 	 *            是否为升序
 	 * @return Page<SysUserEntity>
 	 */
-	Page<SysUserEntity> queryListByPage(Integer offset, Integer limit, String userName, String sort, Boolean order);
+	Page<SysUserEntity> queryListByPage(Integer offset, Integer limit, String email, String userName, String sort,
+			Boolean order);
 }

@@ -21,6 +21,9 @@
 				AND (select p.name from sys_menu p where p.menu_id =
 				m.parent_id) like concat('%',#{parentName},'%')
 			</if>
+			<if test="null!=menuName and menuName.trim() != ''">
+				AND m.name like concat('%',#{menuName},'%')
+			</if>
 		</where>
 		<if test="null!=sort and null!=order">
 			order by ${sort} ${order}
@@ -31,7 +34,16 @@
 	</select>
 
 	<select id="queryTotal" resultType="int">
-		select count(*) from sys_menu
+		select count(*) from sys_menu m
+		<where>
+			<if test="null!=parentName and parentName.trim() != ''">
+				AND (select p.name from sys_menu p where p.menu_id =
+				m.parent_id) like concat('%',#{parentName},'%')
+			</if>
+			<if test="null!=menuName and menuName.trim() != ''">
+				AND m.name like concat('%',#{menuName},'%')
+			</if>
+		</where>
 	</select>
 
 	<delete id="deleteBatch">

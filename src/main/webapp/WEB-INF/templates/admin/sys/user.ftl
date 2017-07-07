@@ -13,31 +13,61 @@
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
                     <h5>管理员列表</h5>
+
                     <div class="ibox-tools"><a class="collapse-link"><i class="fa fa-chevron-up"></i></a> <a
                             class="close-link"><i class="fa fa-times"></i></a></div>
                 </div>
                 <div class="ibox-content form-horizontal">
                     <div class="row row-lg">
+                        <form id="searchform">
+                            <div class="col-sm-3">
+                                <div class="input-group">
+                                    <div class="input-group-btn">
+                                        <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle"
+                                                type="button" aria-expanded="false">用户名
+                                        </button>
+                                    </div>
+                                    <input type="text" class="form-control" name="q_userName" placeholder="">
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="input-group">
+                                    <div class="input-group-btn">
+                                        <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle"
+                                                type="button" aria-expanded="false">邮箱
+                                        </button>
+                                    </div>
+                                    <input type="text" class="form-control" name="q_email" placeholder="">
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <button type="button" class="btn btn-primary" onclick="search()">
+                                    <i class="fa fa-search"></i>&nbsp;搜索
+                                </button>
+                            </div>
+                        </form>
                         <div class="col-sm-12">
                             <div class="example-wrap">
                                 <div class="example">
                                     <div id="toolbar" class="btn-group m-t-sm">
-                  	 				[@shiro.hasPermission name="sys:user:save"]
-                                        <button type="button" style="margin-right:10px;" class="btn btn-default"
+                                        [@shiro.hasPermission name="sys:user:save"]
+                                        <button type="button" style="margin-right:10px;" class="btn btn-primary"
                                                 title="创建管理员" onclick="add($('#showHandle'))"><i
-                                                class="glyphicon glyphicon-plus"></i> 创建管理员</button>
-                                    [/@shiro.hasPermission]
-                  	 				[@shiro.hasPermission name="sys:user:delete"]
+                                                class="glyphicon glyphicon-plus"></i> 创建管理员
+                                        </button>
+                                        [/@shiro.hasPermission]
+                                        [@shiro.hasPermission name="sys:user:delete"]
                                         <button type="button" style="margin-right:10px;" class="btn btn-danger"
                                                 title="批量删除管理员" onclick="del($('#table'))"><i
-                                                class="glyphicon glyphicon-remove"></i> 批量删除管理员</button>
-                                    [/@shiro.hasPermission]
+                                                class="glyphicon glyphicon-remove"></i> 批量删除管理员
+                                        </button>
+                                        [/@shiro.hasPermission]
                                     </div>
                                     <table id="table"
                                            data-toggle="table"
                                            data-height="600"
-                                           data-search="true"
-                                           data-search-on-enter-key="true"
+                                           data-search="false"
+                                           data-search-on-enter-key="false"
                                            data-show-refresh="true"
                                            data-show-toggle="true"
                                            data-show-export="true"
@@ -55,7 +85,7 @@
                                            data-click-to-select="true" [#-- 设置true 将在点击行时，自动选择rediobox 和 checkbox --]
                                            data-single-select="false" [#-- 设置True 将禁止多选 --]
                                            data-unique-id="userId" [#-- 填写主键ID即可 --][#-- 官方文档:http://bootstrap-table.wenzhixin.net.cn/zh-cn/documentation/ --]
-                                           data-response-handler="defaultBootstarpTableHandler">
+                                    	   data-response-handler="defaultBootstarpTableHandler">
                                     <thead>
                                     <tr>
                                         <th data-checkbox="true"></th>
@@ -86,9 +116,9 @@
                                     </tr>
                                     </thead>
                                     </table>
-                   <input type='hidden' id="handle" 
-                        [@shiro.hasPermission name="sys:user:update"] data-update="true"[/@shiro.hasPermission]
-                        [@shiro.hasPermission name="sys:user:delete"] data-delete="true"[/@shiro.hasPermission]/>
+                                    <input type='hidden' id="handle"
+                                        [@shiro.hasPermission name="sys:user:update" ] data-update="true" [/@shiro.hasPermission]
+                                    	[@shiro.hasPermission name="sys:user:delete"] data-delete="true"[/@shiro.hasPermission]/>
                                 </div>
                             </div>
                         </div>
@@ -110,8 +140,10 @@
             <div class="ibox-content form-horizontal">
                 <form id="form">
                     <input type='hidden' name="userId"/>
+
                     <div class="form-group m-t">
                         <label class="col-sm-2 col-xs-offset-1 control-label">用户名：</label>
+
                         <div class="col-sm-6">
                             <input type="text" maxlength="15" class="form-control" name="username">
                         </div>
@@ -119,6 +151,7 @@
                     <div class="hr-line-dashed"></div>
                     <div class="form-group">
                         <label class="col-sm-2 col-xs-offset-1 control-label">密码：</label>
+
                         <div class="col-sm-6">
                             <input type="text" class="form-control" name="password">
                         </div>
@@ -126,6 +159,7 @@
                     <div class="hr-line-dashed"></div>
                     <div class="form-group">
                         <label class="col-sm-2 col-xs-offset-1 control-label">邮箱：</label>
+
                         <div class="col-sm-6">
                             <input type="text" class="form-control" name="email">
                         </div>
@@ -133,6 +167,7 @@
                     <div class="hr-line-dashed"></div>
                     <div class="form-group">
                         <label class="col-sm-2 col-xs-offset-1 control-label">手机号：</label>
+
                         <div class="col-sm-6">
                             <input type="text" class="form-control" name="mobile">
                         </div>
@@ -140,41 +175,44 @@
                     <div class="hr-line-dashed"></div>
                     <div class="form-group">
                         <label class="col-sm-2 col-xs-offset-1 control-label">性别：</label>
+
                         <div class="col-sm-6">
-                             <label class="radio-inline add-radio">
-	                                    <input type="radio" name="sex" value="1">
-	                                    男</label>
-	                                <label class="radio-inline add-radio">
-	                                    <input type="radio" name="sex" value="2">
-	                                    女</label>
-	                                <label class="radio-inline add-radio">
-	                                    <input type="radio" name="sex" value="0">
-	                                    保密</label>
+                            <label class="radio-inline add-radio">
+                                <input type="radio" name="sex" value="1">
+                                男</label>
+                            <label class="radio-inline add-radio">
+                                <input type="radio" name="sex" value="2">
+                                女</label>
+                            <label class="radio-inline add-radio">
+                                <input type="radio" name="sex" value="0">
+                                保密</label>
                         </div>
                     </div>
                     <div class="hr-line-dashed"></div>
                     <div class="form-group">
                         <label class="col-sm-2 col-xs-offset-1 control-label">角色：</label>
+
                         <div id="rolelist" class="col-sm-6">
-                            
+
                         </div>
                     </div>
                     <div class="hr-line-dashed"></div>
                     <div class="form-group">
                         <label class="col-sm-2 col-xs-offset-1 control-label">状态：</label>
-                        <div class="col-sm-6">  
-	                        <label class="radio-inline add-radio">
-	                                    <input type="radio" name="status" value="1">
-	                                    正常</label>
-	                                <label class="radio-inline add-radio">
-	                                    <input type="radio" name="status" value="0">
-	                                    禁用</label>
+
+                        <div class="col-sm-6">
+                            <label class="radio-inline add-radio">
+                                <input type="radio" name="status" value="1">
+                                正常</label>
+                            <label class="radio-inline add-radio">
+                                <input type="radio" name="status" value="0">
+                                禁用</label>
                         </div>
                     </div>
                     <div class="hr-line-dashed"></div>
                     <div class="form-group">
                         <div class="col-sm-12 text-center">
-                            <button type="submit" class="btn btn-success" onclick="saveOrUpdate(this);">提交
+                            <button type="button" class="btn btn-success" onclick="saveOrUpdate(this);">提交
                             </button>
                         </div>
                     </div>
@@ -195,8 +233,5 @@
 <script src="${base}/statics/js/admin/sys/admin.js"></script>
 <!-- iCheck -->
 <script src="${base}/statics/common/icheck/icheck.min.js"></script>
-[#-- 自定义搜索框placeholder --]
-[#assign searchText="用户名"]
-[#include "/admin/bootstrapcommon.ftl"]
 </body>
 </html>

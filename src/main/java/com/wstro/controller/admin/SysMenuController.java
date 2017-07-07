@@ -43,7 +43,14 @@ public class SysMenuController extends AbstractController {
 	@RequestMapping("/list")
 	@RequiresPermissions("sys:menu:list")
 	public R list(Integer offset, Integer limit, String sort, String order,
-			@RequestParam(name = "search", required = false) String parentName) {
+			@RequestParam(name = "search", required = false) String search) {
+		Map<String, String> searchList = parseObject(search, "q_parentName", "q_menuName");
+		String parentName = null;
+		String menuName = null;
+		if (null != searchList) {
+			parentName = searchList.get("q_parentName");
+			menuName = searchList.get("q_menuName");
+		}
 		Map<String, Object> map = new HashMap<>();
 		map.put("offset", offset);
 		map.put("limit", limit);
@@ -51,6 +58,7 @@ public class SysMenuController extends AbstractController {
 		map.put("sort", sort.equalsIgnoreCase("orderNum") ? "order_num" : sort);
 		map.put("order", order);
 		map.put("parentName", parentName);
+		map.put("menuName", menuName);
 
 		// 查询列表数据
 		List<SysMenuEntity> menuList = sysMenuService.queryList(map);

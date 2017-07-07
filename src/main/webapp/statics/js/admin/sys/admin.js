@@ -45,6 +45,25 @@ $(function() {
 					});
 });
 
+// 筛选数据
+function search() {
+	var params = $('#table').bootstrapTable('getOptions');
+	params.queryParams = function(params) {
+		// 定义参数
+		var search = {};
+		// 遍历form 组装json
+		$.each($("#searchform").serializeArray(), function(i, field) {
+			// 可以添加提交验证
+			search[field.name] = field.value;
+		});
+
+		// 参数转为json字符串，并赋给search变量 ,JSON.stringify <ie7不支持，有第三方解决插件
+		params.search = JSON.stringify(search);
+		return params;
+	}
+	$('#table').bootstrapTable('refresh', params);
+}
+
 var user;
 /**
  * ICheck选择样式
@@ -81,18 +100,20 @@ function actionFormatter(e, value, row, index) {
 	} else if (null == data_update && null != data_delete) {
 		return [
 				'<a class="remove text-danger" href="javascript:void(0)" title="删除">',
-				'<i class="glyphicon glyphicon-remove"></i>', '</a>' ].join('');
+				'<i class="glyphicon glyphicon-remove"></i>删除', '</a>' ]
+				.join('');
 	} else if (null != data_update && null == data_delete) {
 		return [
 				'<a class="edit text-warning" href="javascript:void(0)" title="编辑">',
-				'<i class="glyphicon glyphicon-edit"></i>', '</a>' ].join('');
+				'<i class="glyphicon glyphicon-edit"></i>编辑', '</a>' ].join('');
 	} else {
 		return [
 				'<a class="edit m-r-sm text-warning" href="javascript:void(0)" title="编辑">',
-				'<i class="glyphicon glyphicon-edit"></i>',
+				'<i class="glyphicon glyphicon-edit"></i>编辑',
 				'</a>',
 				'<a class="remove text-danger" href="javascript:void(0)" title="删除">',
-				'<i class="glyphicon glyphicon-remove"></i>', '</a>' ].join('');
+				'<i class="glyphicon glyphicon-remove"></i>删除', '</a>' ]
+				.join('');
 	}
 }
 
@@ -141,6 +162,13 @@ function user_delete(index, value) {
 	});
 }
 
+// 修改用户
+function user_update(index, value) {
+	$("#title").text("修改用户");
+	getRoleList(value);
+	layer_show("修改用户", $("#showHandle"), 800, 500);
+}
+
 /**
  * 批量删除用户
  */
@@ -180,13 +208,6 @@ function del(tableName) {
 			}
 		})
 	});
-}
-
-// 修改用户
-function user_update(index, value) {
-	$("#title").text("修改用户");
-	getRoleList(value);
-	layer_show("修改用户", $("#showHandle"), 800, 500);
 }
 
 // 新建用户
@@ -267,9 +288,21 @@ function getRoleList(userId) {
  */
 function saveOrUpdate(e) {
 	loadingButton($(e));
+
+	if (!validateForm($("#form"))) {
+		return false;
+	}
+
 	var userId = $("input[name='userId']").val();
 	userId = userId == "" ? null : userId;
 	var params = "";
+	var roleList = $("input[name='role']:checked");
+	if (null == roleList || roleList.length < 1) {
+		layer.alert('请为用户赋予至少一个权限', {
+			icon : 2
+		});
+		return false;
+	}
 	$("#form input").each(function() {
 		params += $(this).serialize() + "&";
 	});
