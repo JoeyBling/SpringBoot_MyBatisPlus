@@ -1,3 +1,70 @@
+**项目结构** 
+```
+wstro
+├─sql  项目SQL语句
+│ 
+├─App 项目启动类
+│
+├─config 配置信息
+│
+├─controller 控制器
+│  ├─admin 后台管理员控制器
+│ 
+├─service 业务逻辑接口
+│  ├─impl 业务逻辑接口实现类
+│
+├─dao 数据访问接口
+├
+├─entity 数据持久化实体类
+│
+├─datasources 多数据源工具类
+│
+├─shiro Shiro验证框架
+│ 
+├─task Quartz定时任务
+│ 
+├─util 项目所用的的所有工具类
+│  ├─freemaker 自定义FreeMaker标签
+│  
+├──resources 
+│  ├─mapper SQL对应的XML文件
+│  ├─templates FreeMaker模版
+│  
+├──webapp
+│  ├─statics 静态资源
+│  ├─upload 上传文件
+│  ├─WEB-INF
+│	├─templates 页面FreeMaker模版
+
+```
+<br> 
+
+
+**技术选型：** 
+- 核心框架：Spring Boot 1.5.1
+- 安全框架：Apache Shiro
+- 视图框架：Spring MVC
+- 持久层框架：MyBatis MyBatisPlus
+- 缓存技术：EhCache,Redis
+- 定时器：Quartz
+- 数据库连接池：Druid
+- 日志管理：SLF4J、Log4j
+- 模版技术：FreeMaker
+- 页面交互：BootStrap、Layer等
+<br> 
+
+
+ **本地部署**
+- 通过git下载源码
+- 创建数据库wstro，数据库编码为UTF-8
+- 执行sql/wstro.sql文件，初始化数据
+- 修改application-dev.properties，更新MySQL账号和密码
+- Eclipse、IDEA运行App.java，则可启动项目
+- 项目访问路径：http://localhost:8088/wstro
+- 账号密码：admin/admin
+
+
+
 数据库文件: /sql/wstro.sql  直接运行mysql
    			更改配置文件application-*.properties的数据库连接信息
 			spring.datasource.url
@@ -28,9 +95,6 @@
 		 可自行修改 pom文件的 maven.compiler.source  maven.compiler.target为1.7
 
 
-项目使用技术:SpringBoot Spring SpringMVC MyBatis MyBatisPlus Freemaker ApacheShiro 
-
-数据库:MySql
 
 
 部署:application.properties更改指定部署模式还是开发模式 dev / prod  
