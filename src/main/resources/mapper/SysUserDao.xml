@@ -59,8 +59,18 @@
 			<if test="sex != null">`sex` = #{sex}, </if>
 			<if test="createTime != null">`create_time` = #{createTime}, </if>
 			<if test="lastLoginTime !=null">`last_login_time` = #{lastLoginTime},</if>
+			<if test="avatarUrl != null">`avatar_url` = #{avatarUrl}, </if>
 			<if test="lastLoginIp !=null">`last_login_ip` = #{lastLoginIp}</if>
 		</set>
 		where user_id = #{userId}
 	</update>
+	
+	<update id="updateAvatar" parameterType="SysUserEntity">
+		update sys_user
+		<set>
+			<if test="avatarUrl != null">`avatar_url` = #{avatarUrl}, </if>
+		</set>
+		where user_id = #{userId}
+	</update>
+	
 </mapper>

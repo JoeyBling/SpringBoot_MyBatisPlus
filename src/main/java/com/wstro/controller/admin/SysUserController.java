@@ -195,6 +195,19 @@ public class SysUserController extends AbstractController {
 	}
 
 	/**
+	 * 修改头像
+	 * 
+	 * @param model
+	 *            Model
+	 * @return
+	 */
+	@RequestMapping("/avatar.html")
+	public String avatar(Model model) {
+		model.addAttribute("admin", getAdmin());
+		return "/admin/sys/avatar";
+	}
+
+	/**
 	 * 更新自己的个人信息
 	 * 
 	 * @return
@@ -212,6 +225,24 @@ public class SysUserController extends AbstractController {
 			return R.ok();
 		else
 			return R.error("修改失败!");
+	}
+
+	/**
+	 * 更新自己的头像
+	 * 
+	 * @return
+	 */
+	@RequestMapping("/updateAvatar")
+	@ResponseBody
+	public R updateAvatar(String avatarUrl) {
+		SysUserEntity currentUser = getAdmin();
+		currentUser.setAvatarUrl(avatarUrl);
+		int updateAvatar = sysUserService.updateAvatar(currentUser);
+		if (updateAvatar > 0) {
+			return R.ok();
+		} else {
+			return R.error("修改失败!");
+		}
 	}
 
 	/**

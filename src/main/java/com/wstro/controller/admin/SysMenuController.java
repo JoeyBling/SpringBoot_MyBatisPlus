@@ -1,5 +1,7 @@
 package com.wstro.controller.admin;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -158,6 +160,26 @@ public class SysMenuController extends AbstractController {
 				return R.error("系统菜单，不能删除");
 			}
 		}
+
+		List<Long> menuIdsFlag = new ArrayList<Long>();
+		Collections.addAll(menuIdsFlag, menuIds);
+		boolean flag = true;
+		for (Long menuId : menuIds) {
+			flag = true;
+			// 判断是否有子菜单或按钮
+			List<SysMenuEntity> menuList = sysMenuService.queryListParentId(menuId, null);
+			for (SysMenuEntity sysMenuEntity : menuList) {
+				if (menuIdsFlag.contains(sysMenuEntity.getMenuId())) {
+					flag = false; // 已经存在要删除的子菜单或按钮
+				} else {
+					flag = true;
+				}
+			}
+			if (menuList.size() > 0 && flag) {
+				return R.error("请先删除子菜单或按钮");
+			}
+		}
+
 		sysMenuService.deleteBatch(menuIds);
 
 		// 清空菜单缓存
@@ -188,11 +210,13 @@ public class SysMenuController extends AbstractController {
 
 		// 上级菜单类型
 		int parentType = MenuType.CATALOG.getValue();
-		SysMenuEntity parentMenu = sysMenuService.selectById(menu.getParentId());
-		if (null == parentMenu) {
-			throw new RRException("请先选择上级菜单");
+		if (menu.getType() != MenuType.CATALOG.getValue()) {
+			SysMenuEntity parentMenu = sysMenuService.selectById(menu.getParentId());
+			if (null == parentMenu) {
+				throw new RRException("请先选择上级菜单");
+			}
+			parentType = parentMenu.getType();
 		}
-		parentType = parentMenu.getType();
 
 		// 目录、菜单
 		if (menu.getType() == MenuType.CATALOG.getValue() || menu.getType() == MenuType.MENU.getValue()) {

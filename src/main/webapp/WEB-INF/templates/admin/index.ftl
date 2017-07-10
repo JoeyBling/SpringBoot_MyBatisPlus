@@ -19,13 +19,18 @@
     <div class="sidebar-collapse">
         <ul class="nav" id="side-menu">
             <li class="nav-header">
-                <div class="dropdown profile-element"><span> </span> <a
+                <div class="dropdown profile-element"><span> </span> 
+                	<span class="default-avatar">
+                		<img alt="image" width="58" height="58" class="img-circle" src="${base}/${admin.avatarUrl!""}"></span>
+                	<a
                         data-toggle="dropdown" class="dropdown-toggle" href="javascript:void(0);"> <span class="clear"> <span
                         class="block m-t-xs"><strong class="font-bold">${admin.username}</strong></span> <span
                         class="text-muted text-xs block">${admin.email}<b class="caret"></b></span> </span> </a>
                     <ul class="dropdown-menu animated fadeInRight m-t-xs">
                         <li><a class="J_menuItem" href="${base}/admin/sys/user/view"
                                data-index="1">个人资料</a></li>
+                        <li><a class="J_menuItem" href="${base}/admin/sys/user/avatar.html"
+                               data-index="1">修改头像</a></li>
                         <li class="divider"></li>
                         <li><a href="${base}/admin/sys/logout">安全退出</a></li>
                     </ul>

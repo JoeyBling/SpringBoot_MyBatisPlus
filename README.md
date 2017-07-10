@@ -25,6 +25,7 @@
 			localhost:8080/admin
 			
 	注意：本项目使用的是  JDK1.8 
+		 可自行修改 pom文件的 maven.compiler.source  maven.compiler.target为1.7
 
 
 项目使用技术:SpringBoot Spring SpringMVC MyBatis MyBatisPlus Freemaker ApacheShiro 

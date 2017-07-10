@@ -310,6 +310,9 @@ function saveOrUpdate(e) {
 	$.ajax({
 		type : "POST",
 		url : url,
+		headers : {
+			'Content-Type' : 'application/x-www-form-urlencoded'
+		},
 		data : params,
 		success : function(r) {
 			if (r.code === 0) {

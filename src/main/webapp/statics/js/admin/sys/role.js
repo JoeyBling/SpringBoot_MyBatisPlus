@@ -177,6 +177,9 @@ function saveOrUpdate(e) {// 获取选择的菜单
 	$.ajax({
 		type : "POST",
 		url : url,
+		headers : {
+			'Content-Type' : 'application/x-www-form-urlencoded'
+		},
 		data : {
 			roleId : roleId,
 			roleName : roleName,

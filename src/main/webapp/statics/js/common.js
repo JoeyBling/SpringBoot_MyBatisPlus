@@ -24,9 +24,6 @@ T.p = url;
 $.ajaxSetup({
 	dataType : "json",
 	contentType : "application/json",
-	headers : {
-		'Content-Type' : 'application/x-www-form-urlencoded'
-	},
 	error : function(jqXHR, textStatus, errorThrown) {
 		switch (jqXHR.status) {
 		case (500):

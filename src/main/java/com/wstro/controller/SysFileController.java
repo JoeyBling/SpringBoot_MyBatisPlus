@@ -9,11 +9,13 @@ import java.io.IOException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.util.Date;
+import java.util.Iterator;
 
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -78,45 +80,52 @@ public class SysFileController extends AbstractController {
 	// 此处没有做权限验证
 	@ResponseBody
 	@RequestMapping(value = "/upload", method = RequestMethod.POST)
-	public R upload(@RequestParam("name") String flag, Integer uploadType, HttpServletRequest request)
-			throws Exception {
+	public R upload(Integer uploadType, HttpServletRequest request) throws Exception {
 		uploadPath = constant.uploadPath; // 上传文件保存的路径
 		fileContextPath = constant.fileContextPath; // 存放路径上下文
-		MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
-		MultipartFile file = multipartRequest.getFile(flag);// 获取上传文件
+		MultipartHttpServletRequest multipartRequest = null;
+		if (ServletFileUpload.isMultipartContent(request)) { // 判断request是否有文件上传
+			multipartRequest = (MultipartHttpServletRequest) request;
+		} else {
+			return R.error("请先选择上传的文件");
+		}
+		Iterator<String> ite = multipartRequest.getFileNames();
+		while (ite.hasNext()) {
+			MultipartFile file = multipartRequest.getFile(ite.next());
+			if (file == null)
+				return R.error("上传文件为空"); // 判断上传的文件是否为空
+			uploadPath = request.getServletContext().getRealPath(uploadPath) + File.separator;
+			fileName = file.getOriginalFilename();
+			logger.info("上传的文件原名称:" + fileName);
+			// 上传文件类型
+			fileType = fileName.indexOf(".") != -1
+					? fileName.substring(fileName.lastIndexOf(".") + 1, fileName.length()) : null;
 
-		if (file == null)
-			return R.error("上传文件为空"); // 判断上传的文件是否为空
-		uploadPath = request.getServletContext().getRealPath(uploadPath) + File.separator;
-		fileName = file.getOriginalFilename();
-		logger.info("上传的文件原名称:" + fileName);
-		// 上传文件类型
-		fileType = fileName.indexOf(".") != -1 ? fileName.substring(fileName.lastIndexOf(".") + 1, fileName.length())
-				: null;
+			logger.info("上传文件类型:" + fileType);
+			// 自定义的文件名称
+			String trueFileName = getTrueFileName(fileName, uploadType);
+			fileContextPath += File.separator + trueFileName;
+			// 防止火狐等浏览器不显示图片
+			fileContextPath = fileContextPath.replace("\\", "/");
+			uploadPath += trueFileName;
+			File fileUpload = new File(uploadPath); // 上传文件后的保存路径
 
-		logger.info("上传文件类型:" + fileType);
-		// 自定义的文件名称
-		String trueFileName = getTrueFileName(fileName, uploadType);
-		fileContextPath += File.separator + trueFileName;
-		// 防止火狐等浏览器不显示图片
-		fileContextPath = fileContextPath.replace("\\", "/");
-		uploadPath += trueFileName;
-		File fileUpload = new File(uploadPath); // 上传文件后的保存路径
+			// 创建父级目录
+			FileUtil.createParentPath(fileUpload);
 
-		// 创建父级目录
-		FileUtil.createParentPath(fileUpload);
-
-		logger.info("存放文件的路径:" + uploadPath);
-		file.transferTo(fileUpload);
-		// 进行文件处理
-		fileHandle(fileUpload);
+			logger.info("存放文件的路径:" + uploadPath);
+			file.transferTo(fileUpload);
+			// 进行文件处理
+			fileHandle(fileUpload);
+			break; // 这里暂时只能上传一个文件
+		}
 		return R.ok().put("filePath", fileContextPath);
 	}
 
 	/**
 	 * 进行文件处理
 	 * 
-	 * @param fileUpload
+	 * @param file
 	 *            File
 	 * @throws IOException
 	 */
@@ -146,6 +155,8 @@ public class SysFileController extends AbstractController {
 	private String getTrueFileName(String file_Name, Integer uploadType) {
 		StringBuffer bf = new StringBuffer();
 		if (null == uploadType) {
+		} else if (uploadType == UploadType.adminAvatar.getValue()) {
+			bf.append("adminAvatar" + File.separator);
 		} else if (uploadType == UploadType.other.getValue()) {
 			bf.append("other" + File.separator);
 		} else {

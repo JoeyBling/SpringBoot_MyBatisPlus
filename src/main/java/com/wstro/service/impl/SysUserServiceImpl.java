@@ -78,6 +78,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserDao, SysUserEntity> i
 	}
 
 	@Override
+	@Transactional
 	public void updateUser(SysUserEntity entity) {
 		if (StringUtils.isBlank(entity.getPassword())) {
 			entity.setPassword(null);
@@ -91,8 +92,8 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserDao, SysUserEntity> i
 	}
 
 	@Override
-	public Page<SysUserEntity> queryListByPage(Integer offset, Integer limit,String email, String userName, String sort,
-			Boolean order) {
+	public Page<SysUserEntity> queryListByPage(Integer offset, Integer limit, String email, String userName,
+			String sort, Boolean order) {
 		Wrapper<SysUserEntity> wrapper = new EntityWrapper<SysUserEntity>();
 		if (StringUtils.isNoneBlank(sort) && null != order) {
 			wrapper.orderBy(sort, order);
@@ -105,6 +106,12 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserDao, SysUserEntity> i
 		}
 		Page<SysUserEntity> page = new Page<>(offset, limit);
 		return this.selectPage(page, wrapper);
+	}
+
+	@Override
+	public int updateAvatar(SysUserEntity entity) {
+		int update = dao.updateAvatar(entity);
+		return update;
 	}
 
 }

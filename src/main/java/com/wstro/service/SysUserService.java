@@ -98,4 +98,13 @@ public interface SysUserService extends IService<SysUserEntity> {
 	 */
 	Page<SysUserEntity> queryListByPage(Integer offset, Integer limit, String email, String userName, String sort,
 			Boolean order);
+
+	/**
+	 * 更新用户头像
+	 * 
+	 * @param entity
+	 *            系统用户
+	 * @return 更新行数
+	 */
+	public int updateAvatar(SysUserEntity entity);
 }

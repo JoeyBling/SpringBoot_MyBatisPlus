@@ -74,7 +74,12 @@ public class Constant {
 		/**
 		 * 其他
 		 */
-		other(-1);
+		other(-1),
+
+		/**
+		 * 管理员上传头像
+		 */
+		adminAvatar(0);
 
 		private int value;
 

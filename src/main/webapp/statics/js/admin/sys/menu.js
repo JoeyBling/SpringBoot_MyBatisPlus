@@ -233,6 +233,9 @@ function saveOrUpdate(e) {
 	$.ajax({
 		type : "POST",
 		url : url,
+		headers : {
+			'Content-Type' : 'application/x-www-form-urlencoded'
+		},
 		data : {
 			menuId : menuId,
 			type : type,

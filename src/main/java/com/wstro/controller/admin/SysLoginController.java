@@ -70,10 +70,11 @@ public class SysLoginController extends AbstractController {
 	 */
 	@RequestMapping("/")
 	public String redirect() {
-		if (ShiroUtils.isLogin())
-			return "/admin/index";
-		else
+		if (ShiroUtils.isLogin()) {
+			return "redirect:/admin/index.html";
+		} else {
 			return "/admin/login";
+		}
 	}
 
 	/**
@@ -200,4 +201,5 @@ public class SysLoginController extends AbstractController {
 
 		return "redirect:/admin/login.html";
 	}
+
 }

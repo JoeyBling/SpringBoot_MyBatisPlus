@@ -57,4 +57,13 @@ public interface SysUserDao extends BaseDao<SysUserEntity> {
 	 * @param entity
 	 */
 	void updateUser(SysUserEntity entity);
+
+	/**
+	 * 更新头像
+	 * 
+	 * @param entity
+	 *            SysUserEntity
+	 * @return int
+	 */
+	int updateAvatar(SysUserEntity entity);
 }

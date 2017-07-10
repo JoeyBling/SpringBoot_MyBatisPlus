@@ -72,6 +72,11 @@ public class SysUserEntity implements Serializable {
 	 */
 	@TableField
 	private String lastLoginIp;
+	
+	/**
+	 * 头像缩略图地址
+	 */
+	private String avatarUrl;
 
 	/**
 	 * 状态 0：禁用 1：正常
@@ -178,6 +183,14 @@ public class SysUserEntity implements Serializable {
 
 	public void setRoleIdList(List<Long> roleIdList) {
 		this.roleIdList = roleIdList;
+	}
+
+	public String getAvatarUrl() {
+		return avatarUrl;
+	}
+
+	public void setAvatarUrl(String avatarUrl) {
+		this.avatarUrl = avatarUrl;
 	}
 
 }
