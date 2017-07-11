@@ -8,9 +8,9 @@
     <!-- iCheck -->
     <script src="${base}/statics/common/icheck/icheck.min.js"></script>
 </head>
-<body class="gray-bg">
+<body class="gray-bg" style="display:none;">
 <div class="wrapper wrapper-content">
-    <div class="row">
+    <div id="row" class="row">
         <div class="col-sm-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
@@ -25,7 +25,7 @@
                             <div class="col-sm-3">
                                 <div class="input-group">
                                     <div class="input-group-btn">
-                                        <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle"
+                                        <button data-toggle="dropdown" class="btn btn-default dropdown-toggle"
                                                 type="button" aria-expanded="false">菜单名称
                                         </button>
                                     </div>
@@ -35,7 +35,7 @@
                             <div class="col-sm-3">
                                 <div class="input-group">
                                     <div class="input-group-btn">
-                                        <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle"
+                                        <button data-toggle="dropdown" class="btn btn-default dropdown-toggle"
                                                 type="button" aria-expanded="false">上级菜单
                                         </button>
                                     </div>
@@ -251,5 +251,8 @@
 <script src="${base}/statics/common/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
 <!-- 自定义js -->
 <script src="${base}/statics/js/admin/sys/menu.js"></script>
+[#-- 页面加载进度条 --]
+[#assign parentName="#row"][#-- 默认为Body --]
+[#include "/admin/nprogress.ftl"]
 </body>
 </html>

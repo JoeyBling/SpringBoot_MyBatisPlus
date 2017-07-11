@@ -5,9 +5,9 @@
     [#include "/admin/header.ftl"]
     <link rel="stylesheet" href="${base}/statics/common/bootstrap-table/bootstrap-table.min.css"/>
 </head>
-<body class="gray-bg">
+<body class="gray-bg" style="display:none;">
 <div class="wrapper wrapper-content">
-    <div class="row">
+    <div id="row" class="row">
         <div class="col-sm-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
@@ -151,5 +151,8 @@
 [#-- 自定义搜索框placeholder --]
 [#assign searchText="角色名称"]
 [#include "/admin/bootstrapcommon.ftl"]
+[#-- 页面加载进度条 --]
+[#assign parentName="#row"][#-- 默认为Body --]
+[#include "/admin/nprogress.ftl"]
 </body>
 </html>

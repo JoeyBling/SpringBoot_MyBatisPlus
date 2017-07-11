@@ -17,8 +17,8 @@
         }
     </style>
 </head>
-<body>
-<div class="row">
+<body style="display:none;">
+<div id="row" class="row">
     <div class="col-sm-12">
         <div class="ibox float-e-margins">
             <div class="ibox-title">
@@ -52,6 +52,8 @@
         </div>
     </div>
 </div>
+[#-- 滚动顶部插件 --]
+[#include "/gotop.ftl"]
 </body>
 <script src="${base}/statics/common/bootstrap-fileinput/js/plugins/sortable.js"></script>
 <script src="${base}/statics/common/bootstrap-fileinput/js/fileinput.js"></script>
@@ -201,4 +203,7 @@
     });
 
 </script>
+[#-- 页面加载进度条 --]
+[#assign parentName="#row"][#-- 默认为Body --]
+[#include "/admin/nprogress.ftl"]
 </html>

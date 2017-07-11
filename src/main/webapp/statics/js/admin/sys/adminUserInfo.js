@@ -90,6 +90,10 @@ function save_info() {
 		url : 'updateView',
 		success : function(result) {
 			if (result.code === 0) {
+				layer.alert('修改成功', {
+					title : '提示框',
+					icon : 1
+				});
 				$('.form-disabled').attr("disabled", true);
 				$('#sex').show();
 				$('.add-radio').hide();

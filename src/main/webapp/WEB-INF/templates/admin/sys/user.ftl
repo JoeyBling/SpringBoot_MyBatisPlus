@@ -6,9 +6,9 @@
     <link rel="stylesheet" href="${base}/statics/common/bootstrap-table/bootstrap-table.min.css"/>
     <link rel="stylesheet" href="${base}/statics/common/icheck/flat/green.css"/>
 </head>
-<body class="gray-bg">
+<body class="gray-bg" style="display:none;">
 <div class="wrapper wrapper-content">
-    <div class="row">
+    <div id="row" class="row">
         <div class="col-sm-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
@@ -23,7 +23,7 @@
                             <div class="col-sm-3">
                                 <div class="input-group">
                                     <div class="input-group-btn">
-                                        <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle"
+                                        <button data-toggle="dropdown" class="btn btn-default dropdown-toggle"
                                                 type="button" aria-expanded="false">用户名
                                         </button>
                                     </div>
@@ -33,7 +33,7 @@
                             <div class="col-sm-3">
                                 <div class="input-group">
                                     <div class="input-group-btn">
-                                        <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle"
+                                        <button data-toggle="dropdown" class="btn btn-default dropdown-toggle"
                                                 type="button" aria-expanded="false">邮箱
                                         </button>
                                     </div>
@@ -233,5 +233,16 @@
 <script src="${base}/statics/js/admin/sys/admin.js"></script>
 <!-- iCheck -->
 <script src="${base}/statics/common/icheck/icheck.min.js"></script>
+[#-- 邮箱自动补全 --]
+[#assign inputEmail="input[name='email']"][#-- INPUT元素--]
+[#assign form="#form"]
+[#include "/admin/autoEmail.ftl"]
+[#-- 页面加载进度条 --]
+[#assign parentName="#row"][#-- 默认为Body --]
+[#include "/admin/nprogress.ftl"]
+[#-- 页面加载进度条 --]
+[#assign parentName="#form"]
+[#assign isFirst=true][#-- 默认为Body --]
+[#include "/admin/nprogress.ftl"]
 </body>
 </html>

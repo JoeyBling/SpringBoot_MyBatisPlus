@@ -212,6 +212,7 @@ function del(tableName) {
 
 // 新建用户
 function add(s) {
+	wstro.progressBarStartUp();
 	$("#title").text("新建用户");
 	$("input[name='userId']").val("");
 	$("input[name='username']").val("");
@@ -223,6 +224,7 @@ function add(s) {
 	radio(); // 要重新生成样式
 	getRoleList();
 	layer_show("新建用户", $(s), 800, 500);
+	wstro.progressBarShutDown();
 }
 
 // 获取用户信息
@@ -307,6 +309,7 @@ function saveOrUpdate(e) {
 		params += $(this).serialize() + "&";
 	});
 	var url = userId == null ? "user/save" : "user/update";
+	wstro.progressBarStartUp();
 	$.ajax({
 		type : "POST",
 		url : url,
@@ -315,6 +318,7 @@ function saveOrUpdate(e) {
 		},
 		data : params,
 		success : function(r) {
+			wstro.progressBarShutDown();
 			if (r.code === 0) {
 				layer.msg('操作成功!', {
 					icon : 1,

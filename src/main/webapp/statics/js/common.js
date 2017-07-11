@@ -25,6 +25,8 @@ $.ajaxSetup({
 	dataType : "json",
 	contentType : "application/json",
 	error : function(jqXHR, textStatus, errorThrown) {
+		// 取消进度条
+		wstro.progressBarShutDown();
 		switch (jqXHR.status) {
 		case (500):
 			layer.alert('服务器系统内部错误', {
@@ -231,7 +233,7 @@ function layer_show(title, element, w, h) {
 	}
 	layer.open({
 		type : 1,
-		area : [ w + 'px', h + 'px' ],
+		area : [ w + 'px', '90%' ],
 		shadeClose : true,
 		shade : 0.2,
 		anim : 1, // 0-6的动画形式，-1不开启
@@ -328,3 +330,27 @@ function BootstrapTableformatDate(uuix) {
 	return year + "-" + month + "-" + date + " " + (hour == 0 ? "00" : hour)
 			+ ":" + (minute == 0 ? "00" : minute);
 }
+
+// JS进度条
+// 开始
+wstro.progressBarStartUp = function(type) {
+	if (typeof NProgress != "undefined") {
+		if (type === 1) {
+			NProgress.start();
+		} else {
+			NProgress.inc();
+		}
+	}
+};
+// 开始到指定位置 0-1
+wstro.progressBarSet = function(speed) {
+	if (typeof NProgress != "undefined") {
+		NProgress.set(speed);
+	}
+};
+// 结束
+wstro.progressBarShutDown = function() {
+	if (typeof NProgress != "undefined") {
+		NProgress.done();
+	}
+};

@@ -7,9 +7,9 @@
     <!-- 全局js -->
     <script src="${base}/statics/common/jquery/jquery-3.2.0.min.js"></script>
 </head>
-<body class="gray-bg">
+<body class="gray-bg" style="display:none;">
 <div class="wrapper wrapper-content">
-  <div class="row">
+  <div id="row" class="row">
     <div class="col-sm-12">
       <div class="ibox float-e-margins">
         <div class="ibox-title">
@@ -1001,4 +1001,7 @@
 	</script> 
 </myfooter>
 </body>
+[#-- 页面加载进度条 --]
+[#assign parentName="#row"][#-- 默认为Body --]
+[#include "/admin/nprogress.ftl"]
 </html>
