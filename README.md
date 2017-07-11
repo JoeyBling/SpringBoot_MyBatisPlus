@@ -129,3 +129,14 @@ wstro
 	此处Redis缓存注解和EhCache缓存注解只能使用1个
 	使用
 		@Primary标注
+
+
+
+
+**演示效果图：**
+![演示效果图](https://raw.githubusercontent.com/JoeyBling/JoeyBling.github.io/master/screenshots/20170711085331.png "在这里输入图片标题")
+![演示效果图](https://raw.githubusercontent.com/JoeyBling/JoeyBling.github.io/master/screenshots/20170711085520.png "在这里输入图片标题")
+![演示效果图](https://github.com/JoeyBling/JoeyBling.github.io/blob/master/screenshots/20170711093453.png?raw=true "在这里输入图片标题")
+![演示效果图](https://raw.githubusercontent.com/JoeyBling/JoeyBling.github.io/master/screenshots/20170711093508.png "在这里输入图片标题")
+![演示效果图](https://raw.githubusercontent.com/JoeyBling/JoeyBling.github.io/master/screenshots/20170711093523.png "在这里输入图片标题")
+![演示效果图](https://raw.githubusercontent.com/JoeyBling/JoeyBling.github.io/master/screenshots/20170711093544.png "在这里输入图片标题")
