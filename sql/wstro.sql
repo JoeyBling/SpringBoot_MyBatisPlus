@@ -30,15 +30,15 @@ CREATE TABLE `sys_menu` (
   `icon` varchar(50) DEFAULT NULL COMMENT '菜单图标',
   `order_num` int(11) DEFAULT NULL COMMENT '排序',
   PRIMARY KEY (`menu_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COMMENT='菜单管理';
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8 COMMENT='菜单管理';
 
 /*Data for the table `sys_menu` */
 
 insert  into `sys_menu`(`menu_id`,`parent_id`,`name`,`url`,`perms`,`type`,`icon`,`order_num`) values 
 (1,0,'系统管理','','',0,'fa fa-cog',0),
-(2,1,'管理员列表','sys/user.html',NULL,1,'fa fa-user',1),
-(3,1,'角色管理','sys/role.html',NULL,1,'fa fa-user-secret',2),
-(4,1,'菜单管理','sys/menu.html',NULL,1,'fa fa-th-list',3),
+(2,1,'管理员列表','admin/sys/user.html',NULL,1,'fa fa-user',1),
+(3,1,'角色管理','admin/sys/role.html',NULL,1,'fa fa-user-secret',2),
+(4,1,'菜单管理','admin/sys/menu.html',NULL,1,'fa fa-th-list',3),
 (5,2,'查看',NULL,'sys:user:list,sys:user:info',2,NULL,0),
 (6,2,'新增','','sys:user:save,sys:role:select',2,'',0),
 (7,2,'修改','','sys:user:update,sys:role:select',2,'',0),
@@ -50,7 +50,9 @@ insert  into `sys_menu`(`menu_id`,`parent_id`,`name`,`url`,`perms`,`type`,`icon`
 (13,4,'查看',NULL,'sys:menu:list,sys:menu:info',2,NULL,0),
 (14,4,'新增',NULL,'sys:menu:save,sys:menu:select',2,NULL,0),
 (15,4,'修改',NULL,'sys:menu:update,sys:menu:select',2,NULL,0),
-(16,4,'删除',NULL,'sys:menu:delete',2,NULL,0);
+(16,4,'删除',NULL,'sys:menu:delete',2,NULL,0),
+(17,1,'监控管理','druid/index.html','druid:druid:manager',1,'fa fa-cogs',3),
+(18,1,'Swagger管理','swagger-ui.html','swaggerui:swaggerui:manager',1,'fa fa-diamond',4);
 
 /*Table structure for table `sys_role` */
 
@@ -78,19 +80,21 @@ CREATE TABLE `sys_role_menu` (
   `role_id` bigint(20) DEFAULT NULL COMMENT '角色ID',
   `menu_id` bigint(20) DEFAULT NULL COMMENT '菜单ID',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=231 DEFAULT CHARSET=utf8 COMMENT='角色与菜单对应关系';
+) ENGINE=InnoDB AUTO_INCREMENT=241 DEFAULT CHARSET=utf8 COMMENT='角色与菜单对应关系';
 
 /*Data for the table `sys_role_menu` */
 
 insert  into `sys_role_menu`(`id`,`role_id`,`menu_id`) values 
-(223,13,1),
-(224,13,2),
-(225,13,5),
-(226,13,6),
-(227,13,3),
-(228,13,9),
-(229,13,4),
-(230,13,13);
+(231,13,1),
+(232,13,2),
+(233,13,5),
+(234,13,6),
+(235,13,3),
+(236,13,9),
+(237,13,4),
+(238,13,13),
+(239,13,17),
+(240,13,18);
 
 /*Table structure for table `sys_user` */
 
@@ -105,17 +109,19 @@ CREATE TABLE `sys_user` (
   `mobile` varchar(100) DEFAULT NULL COMMENT '手机号',
   `last_login_time` int(11) DEFAULT NULL COMMENT '最后登录时间',
   `last_login_ip` varchar(20) DEFAULT NULL COMMENT '最后登录IP',
+  `avatar_url` varchar(255) DEFAULT NULL COMMENT '头像缩略图地址',
   `status` tinyint(4) DEFAULT NULL COMMENT '状态  0：禁用   1：正常',
   `create_time` int(11) DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COMMENT='系统用户';
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COMMENT='系统用户';
 
 /*Data for the table `sys_user` */
 
-insert  into `sys_user`(`user_id`,`username`,`password`,`sex`,`email`,`mobile`,`last_login_time`,`last_login_ip`,`status`,`create_time`) values 
-(1,'admin','8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918',2,'2434387555@qq.com','13647910242',1499134791,'192.168.1.88',1,1498801511),
-(7,'lastone','d50b4c0cab140a3310e256d86fd3cd33c02f145635df4694e71df062c1679a8f',2,'asd@qq.com','13456465465',1499069279,'192.168.1.88',1,1499069190);
+insert  into `sys_user`(`user_id`,`username`,`password`,`sex`,`email`,`mobile`,`last_login_time`,`last_login_ip`,`avatar_url`,`status`,`create_time`) values 
+(1,'admin','8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918',0,'2434387555@qq.com','13647910242',1499733831,'192.168.1.88','upload/adminAvatar/201707/1499675749475head.jpg',1,1498801511),
+(7,'lastone','d50b4c0cab140a3310e256d86fd3cd33c02f145635df4694e71df062c1679a8f',2,'asd@qq.com','13456465465',1499069279,'192.168.1.88','upload/adminAvatar/201707/1499675749475head.jpg',1,1499069190),
+(8,'joey','bfef4adc39f01b033fe749bb5f28f10b581fef319d34445d21a7bc63fe732fa3',2,'2434387555@qq.com','13647910412',1499670576,'192.168.1.88','upload/adminAvatar/201707/1499675749475head.jpg',1,1499410874);
 
 /*Table structure for table `sys_user_login_log` */
 
@@ -129,7 +135,7 @@ CREATE TABLE `sys_user_login_log` (
   `operating_system` varchar(50) DEFAULT NULL COMMENT '操作系统',
   `browser` varchar(50) DEFAULT NULL COMMENT '浏览器',
   PRIMARY KEY (`log_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=273 DEFAULT CHARSET=utf8 COMMENT='用户登录表';
+) ENGINE=InnoDB AUTO_INCREMENT=368 DEFAULT CHARSET=utf8 COMMENT='用户登录表';
 
 /*Data for the table `sys_user_login_log` */
 
@@ -262,7 +268,102 @@ insert  into `sys_user_login_log`(`log_id`,`login_time`,`login_ip`,`user_id`,`op
 (269,1499071525,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
 (270,1499131270,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
 (271,1499134326,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
-(272,1499134791,'192.168.1.88',1,'WINDOWS_7','CHROME49');
+(272,1499134791,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(273,1499153429,'0:0:0:0:0:0:0:1',1,'WINDOWS_7','CHROME49'),
+(274,1499155324,'0:0:0:0:0:0:0:1',1,'WINDOWS_7','CHROME49'),
+(275,1499155573,'0:0:0:0:0:0:0:1',1,'WINDOWS_7','CHROME49'),
+(276,1499157566,'0:0:0:0:0:0:0:1',1,'WINDOWS_7','CHROME49'),
+(277,1499157784,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(278,1499224438,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(279,1499224558,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(280,1499237804,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(281,1499238665,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(282,1499240768,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(283,1499240844,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(284,1499240927,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(285,1499241009,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(286,1499241689,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(287,1499241852,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(288,1499241940,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(289,1499242070,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(290,1499242204,'0:0:0:0:0:0:0:1',1,'WINDOWS_7','CHROME49'),
+(291,1499242576,'0:0:0:0:0:0:0:1',1,'WINDOWS_7','CHROME49'),
+(292,1499242686,'0:0:0:0:0:0:0:1',1,'WINDOWS_7','CHROME49'),
+(293,1499242786,'0:0:0:0:0:0:0:1',1,'WINDOWS_7','CHROME49'),
+(294,1499243019,'0:0:0:0:0:0:0:1',1,'WINDOWS_7','CHROME49'),
+(295,1499243826,'0:0:0:0:0:0:0:1',1,'WINDOWS_7','CHROME49'),
+(296,1499244330,'0:0:0:0:0:0:0:1',1,'WINDOWS_7','CHROME49'),
+(297,1499244413,'0:0:0:0:0:0:0:1',1,'WINDOWS_7','CHROME49'),
+(298,1499244893,'0:0:0:0:0:0:0:1',1,'WINDOWS_7','CHROME49'),
+(299,1499245106,'0:0:0:0:0:0:0:1',1,'WINDOWS_7','CHROME49'),
+(300,1499304924,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(301,1499305120,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(302,1499305230,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(303,1499305433,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(304,1499305555,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(305,1499305754,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(306,1499305988,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(307,1499306086,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(308,1499306206,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(309,1499306272,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(310,1499306446,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(311,1499323795,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(312,1499324004,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(313,1499325387,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(314,1499325470,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(315,1499325657,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(316,1499325738,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(317,1499325800,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(318,1499326940,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(319,1499326972,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(320,1499327095,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(321,1499327157,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(322,1499327897,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(323,1499328094,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(324,1499328214,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(325,1499333844,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(326,1499389330,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(327,1499392633,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(328,1499394310,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(329,1499394750,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(330,1499397025,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(331,1499397556,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(332,1499399214,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(333,1499407108,'192.168.1.88',1,'WINDOWS_7','CHROME51'),
+(334,1499407181,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(335,1499410304,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(336,1499410387,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(337,1499410642,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(338,1499410906,'192.168.1.88',8,'WINDOWS_7','CHROME51'),
+(339,1499410928,'192.168.1.88',8,'WINDOWS_7','CHROME51'),
+(340,1499419066,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(341,1499649774,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(342,1499649874,'192.168.1.11',1,'WINDOWS_7','CHROME'),
+(343,1499650352,'192.168.1.11',1,'WINDOWS_7','CHROME'),
+(344,1499651147,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(345,1499651546,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(346,1499651696,'192.168.1.12',1,'WINDOWS_7','CHROME49'),
+(347,1499652951,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(348,1499653330,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(349,1499656282,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(350,1499657144,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(351,1499665646,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(352,1499665846,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(353,1499666672,'192.168.1.12',1,'WINDOWS_7','CHROME49'),
+(354,1499667521,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(355,1499668376,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(356,1499668738,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(357,1499668939,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(358,1499669915,'192.168.1.12',1,'WINDOWS_7','CHROME49'),
+(359,1499670576,'192.168.1.88',8,'WINDOWS_7','CHROME49'),
+(360,1499675439,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(361,1499675579,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(362,1499675677,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(363,1499675734,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(364,1499676954,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(365,1499678029,'192.168.1.12',1,'WINDOWS_7','CHROME49'),
+(366,1499733831,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(367,1499736644,'192.168.1.12',1,'WINDOWS_7','CHROME49');
 
 /*Table structure for table `sys_user_role` */
 
@@ -273,13 +374,14 @@ CREATE TABLE `sys_user_role` (
   `user_id` bigint(20) DEFAULT NULL COMMENT '用户ID',
   `role_id` bigint(20) DEFAULT NULL COMMENT '角色ID',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=59 DEFAULT CHARSET=utf8 COMMENT='用户与角色对应关系';
+) ENGINE=InnoDB AUTO_INCREMENT=62 DEFAULT CHARSET=utf8 COMMENT='用户与角色对应关系';
 
 /*Data for the table `sys_user_role` */
 
 insert  into `sys_user_role`(`id`,`user_id`,`role_id`) values 
 (57,7,13),
-(58,1,13);
+(58,1,13),
+(61,8,13);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
