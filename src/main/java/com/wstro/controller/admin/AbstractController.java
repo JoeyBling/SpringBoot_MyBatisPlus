@@ -77,7 +77,7 @@ abstract class AbstractController {
 	@SuppressWarnings("unchecked")
 	protected <T> Map<String, T> parseObject(String search, String... keyNames) {
 		JSONObject parseObject = JSONArray.parseObject(search);
-		if (null != parseObject || null == keyNames) {
+		if (null != parseObject && null != keyNames) {
 			Map<String, T> map = new HashMap<String, T>();
 			for (String key : keyNames) {
 				map.put(key, (T) parseObject.get(key));
