@@ -5,10 +5,10 @@
     [#include "/admin/header.ftl"]
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
-    <link rel="stylesheet" href="${base}/statics/css/admin/AdminLTE.min.css"/>
+    <link rel="stylesheet" href="${rc.contextPath}/statics/css/admin/AdminLTE.min.css"/>
     <!-- AdminLTE Skins. Choose a skin from the css/skins folder instead of downloading all of them to reduce the load. -->
-    <link rel="stylesheet" href="${base}/statics/css/admin/all-skins.min.css"/>
-    <link rel="stylesheet" href="${base}/statics/css/admin/main.css"/>
+    <link rel="stylesheet" href="${rc.contextPath}/statics/css/admin/all-skins.min.css"/>
+    <link rel="stylesheet" href="${rc.contextPath}/statics/css/admin/main.css"/>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
     <div class="alert alert-danger" style="text-align:center;" role="alert">
@@ -17,7 +17,7 @@
     <![endif]-->
 </head>
 <body class="hold-transition login-page">
-<script zIndex="-1" src="${base}/statics/js/admin/canvas-nest.min.js"></script>
+<script zIndex="-1" src="${rc.contextPath}/statics/js/admin/canvas-nest.min.js"></script>
 <div class="login-box">
     <div class="login-logo">
         <b>XX管理系统</b>
@@ -43,7 +43,7 @@
             <span class="glyphicon glyphicon-warning-sign form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">
-            <img alt="如果看不清楚，请单击图片刷新！" class="pointer" src="${base}/admin/captcha.jpg" onclick="refreshCode()">
+            <img alt="如果看不清楚，请单击图片刷新！" class="pointer" src="${rc.contextPath}/admin/captcha.jpg" onclick="refreshCode()">
             &nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:;" onclick="refreshCode()">点击刷新</a>
         </div>
 
@@ -69,7 +69,7 @@
     });
 
     function refreshCode() {
-        $(".pointer").attr("src", "${base}/admin/captcha.jpg?t=" + new Date().getTime());
+        $(".pointer").attr("src", "${rc.contextPath}/admin/captcha.jpg?t=" + new Date().getTime());
     }
     
     function login(event) {
@@ -82,12 +82,12 @@
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
-            url: "${base}/admin/sys/login",
+            url: "${rc.contextPath}/admin/sys/login",
             data: data,
             dataType: "json",
             success: function (result) {
                 if (result.code == 0) {//登录成功
-                    parent.location.href = '${base}/admin/index.html';
+                    parent.location.href = '${rc.contextPath}/admin/index.html';
                 } else {
                     $(".alert-dismissible").show();
                     $(".errText").text(result.msg);

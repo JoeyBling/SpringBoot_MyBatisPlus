@@ -3,10 +3,10 @@
 <head>
     <title>菜单管理</title>
     [#include "/admin/header.ftl"]
-    <link rel="stylesheet" href="${base}/statics/common/bootstrap-table/bootstrap-table.min.css"/>
-    <link rel="stylesheet" href="${base}/statics/common/icheck/flat/green.css"/>
+    <link rel="stylesheet" href="${rc.contextPath}/statics/common/bootstrap-table/bootstrap-table.min.css"/>
+    <link rel="stylesheet" href="${rc.contextPath}/statics/common/icheck/flat/green.css"/>
     <!-- iCheck -->
-    <script src="${base}/statics/common/icheck/icheck.min.js"></script>
+    <script src="${rc.contextPath}/statics/common/icheck/icheck.min.js"></script>
 </head>
 <body class="gray-bg" style="display:none;">
 <div class="wrapper wrapper-content">
@@ -75,7 +75,7 @@
                                            data-show-toggle="true"
                                            data-show-export="true"
                                            data-show-columns="true"
-                                           data-url="${base}/admin/sys/menu/list" [#-- 服务器数据URL --]
+                                           data-url="${rc.contextPath}/admin/sys/menu/list" [#-- 服务器数据URL --]
                                            data-pagination="true"
                                            data-page-size="20"
                                            data-page-list="[20, 50, 100, 200]"
@@ -214,7 +214,7 @@
                             <div class="col-sm-6">
                                 <div class="input-group m-b"> <span class="input-group-btn">
 	              	 <button type="button" class="btn btn-primary"
-                             onclick="layer_show_url('菜单图标','${base}/admin/sys/menu_icon.html','800','600')" title="图标">
+                             onclick="layer_show_url('菜单图标','${rc.contextPath}/admin/sys/menu_icon.html','800','600')" title="图标">
                          选择
                      </button>
 	                </span><input type="text" class="form-control" name="icon"></div>
@@ -240,17 +240,17 @@
     <ul id="menuTree" class="ztree"></ul>
 </div>
 
-<link rel="stylesheet" href="${base}/statics/common/ztree/css/metroStyle/metroStyle.css">
-<script src="${base}/statics/common/ztree/js/jquery.ztree.all.min.js"></script>
+<link rel="stylesheet" href="${rc.contextPath}/statics/common/ztree/css/metroStyle/metroStyle.css">
+<script src="${rc.contextPath}/statics/common/ztree/js/jquery.ztree.all.min.js"></script>
 <!-- bootstrapvalidator-master前端验证框架 -->
-<script src="${base}/statics/common/bootstrapvalidator/js/bootstrapValidator.min.js"></script>
+<script src="${rc.contextPath}/statics/common/bootstrapvalidator/js/bootstrapValidator.min.js"></script>
 <!-- Bootstrap table -->
-<script src="${base}/statics/common/bootstrap-table/bootstrap-table.min.js"></script>
-<script src="${base}/statics/common/bootstrap-table/extensions/export/bootstrap-table-export.js"></script>
-<script src="${base}/statics/common/bootstrap-table/tableExport.js"></script>
-<script src="${base}/statics/common/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+<script src="${rc.contextPath}/statics/common/bootstrap-table/bootstrap-table.min.js"></script>
+<script src="${rc.contextPath}/statics/common/bootstrap-table/extensions/export/bootstrap-table-export.js"></script>
+<script src="${rc.contextPath}/statics/common/bootstrap-table/tableExport.js"></script>
+<script src="${rc.contextPath}/statics/common/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
 <!-- 自定义js -->
-<script src="${base}/statics/js/admin/sys/menu.js"></script>
+<script src="${rc.contextPath}/statics/js/admin/sys/menu.js"></script>
 [#-- 页面加载进度条 --]
 [#assign parentName="#row"][#-- 默认为Body --]
 [#include "/admin/nprogress.ftl"]

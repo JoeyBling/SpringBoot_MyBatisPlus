@@ -11,16 +11,15 @@
 	<meta name="author" content="${author}" />
 	<meta name="keywords" content="${keywords}">
 	<meta name="description" content="${description}">
- 	<link rel="stylesheet" href="${base}/statics/common/bootstrap/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="${base}/statics/common/font-awesome/css/font-awesome.min.css"/>
-    <link rel="stylesheet" href="${base}/statics/css/admin/animate.css"/>
-    <link rel="stylesheet" href="${base}/statics/css/admin/style.css"/>
+ 	<link rel="stylesheet" href="${rc.contextPath}/statics/common/bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="${rc.contextPath}/statics/common/font-awesome/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="${rc.contextPath}/statics/css/admin/animate.css"/>
+    <link rel="stylesheet" href="${rc.contextPath}/statics/css/admin/style.css"/>
     <!-- 全局js -->
-    <script src="${base}/statics/common/jquery/jquery-3.2.0.min.js"></script>
-    <script src="${base}/statics/js/common.js" type="text/javascript"></script>
-    <script src="${base}/statics/common/bootstrap/js/bootstrap.min.js"></script>
-    <script src="${base}/statics/common/metismenu/metisMenu.min.js"></script>
-    <script src="${base}/statics/common/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="${rc.contextPath}/statics/common/jquery/jquery-3.2.0.min.js"></script>
+    <script src="${rc.contextPath}/statics/js/common.js" type="text/javascript"></script>
+    <script src="${rc.contextPath}/statics/common/bootstrap/js/bootstrap.min.js"></script>
+    <script src="${rc.contextPath}/statics/common/metismenu/metisMenu.min.js"></script>
+    <script src="${rc.contextPath}/statics/common/slimscroll/jquery.slimscroll.min.js"></script>
     <!-- layer弹出框js -->
-    <script src="${base}/statics/common/layer/layer.js"></script>
-    
+    <script src="${rc.contextPath}/statics/common/layer/layer.js"></script>

@@ -1,11 +1,11 @@
 <!DOCTYPE HTML>
 <html>
 <head>
- 	<link rel="stylesheet" href="${base}/statics/common/bootstrap/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="${base}/statics/common/font-awesome/css/font-awesome.min.css"/>
-    <link rel="stylesheet" href="${base}/statics/css/admin/style.css"/>
+ 	<link rel="stylesheet" href="${rc.contextPath}/statics/common/bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="${rc.contextPath}/statics/common/font-awesome/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="${rc.contextPath}/statics/css/admin/style.css"/>
     <!-- 全局js -->
-    <script src="${base}/statics/common/jquery/jquery-3.2.0.min.js"></script>
+    <script src="${rc.contextPath}/statics/common/jquery/jquery-3.2.0.min.js"></script>
 </head>
 <body class="gray-bg" style="display:none;">
 <div class="wrapper wrapper-content">

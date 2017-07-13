@@ -3,8 +3,8 @@
 <head>
     <title>管理员管理</title>
     [#include "/admin/header.ftl"]
-    <link rel="stylesheet" href="${base}/statics/common/bootstrap-table/bootstrap-table.min.css"/>
-    <link rel="stylesheet" href="${base}/statics/common/icheck/flat/green.css"/>
+    <link rel="stylesheet" href="${rc.contextPath}/statics/common/bootstrap-table/bootstrap-table.min.css"/>
+    <link rel="stylesheet" href="${rc.contextPath}/statics/common/icheck/flat/green.css"/>
 </head>
 <body class="gray-bg" style="display:none;">
 <div class="wrapper wrapper-content">
@@ -72,7 +72,7 @@
                                            data-show-toggle="true"
                                            data-show-export="true"
                                            data-show-columns="true"
-                                           data-url="${base}/admin/sys/user/list" [#-- 服务器数据URL --]
+                                           data-url="${rc.contextPath}/admin/sys/user/list" [#-- 服务器数据URL --]
                                            data-pagination="true"
                                            data-page-size="20"
                                            data-page-list="[20, 50, 100, 200]"
@@ -223,16 +223,16 @@
 </div>
 
 <!-- bootstrapvalidator-master前端验证框架 -->
-<script src="${base}/statics/common/bootstrapvalidator/js/bootstrapValidator.min.js"></script>
+<script src="${rc.contextPath}/statics/common/bootstrapvalidator/js/bootstrapValidator.min.js"></script>
 <!-- Bootstrap table -->
-<script src="${base}/statics/common/bootstrap-table/bootstrap-table.min.js"></script>
-<script src="${base}/statics/common/bootstrap-table/extensions/export/bootstrap-table-export.js"></script>
-<script src="${base}/statics/common/bootstrap-table/tableExport.js"></script>
-<script src="${base}/statics/common/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+<script src="${rc.contextPath}/statics/common/bootstrap-table/bootstrap-table.min.js"></script>
+<script src="${rc.contextPath}/statics/common/bootstrap-table/extensions/export/bootstrap-table-export.js"></script>
+<script src="${rc.contextPath}/statics/common/bootstrap-table/tableExport.js"></script>
+<script src="${rc.contextPath}/statics/common/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
 <!-- 自定义js -->
-<script src="${base}/statics/js/admin/sys/admin.js"></script>
+<script src="${rc.contextPath}/statics/js/admin/sys/admin.js"></script>
 <!-- iCheck -->
-<script src="${base}/statics/common/icheck/icheck.min.js"></script>
+<script src="${rc.contextPath}/statics/common/icheck/icheck.min.js"></script>
 [#-- 邮箱自动补全 --]
 [#assign inputEmail="input[name='email']"][#-- INPUT元素--]
 [#assign form="#form"]

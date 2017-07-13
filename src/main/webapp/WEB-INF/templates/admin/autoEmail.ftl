@@ -6,7 +6,7 @@
 	#AutoComplete .hover{background:#6eb6fe;color:#fff;}
 </style>
 
-<script src="${base}/statics/libs/jquery.autocomplete.js"></script>
+<script src="${rc.contextPath}/statics/libs/jquery.autocomplete.js"></script>
 <script>
 	 $(function(){
 	 	//邮箱补全

@@ -4,8 +4,8 @@
 		NProgress.settings.parent = "${parentName!"body"}";
 	</script>
 [#else]
-	<link rel="stylesheet" href="${base}/statics/libs/nprogress/nprogress.css"/>
-	<script src="${base}/statics/libs/nprogress/nprogress.js"></script>
+	<link rel="stylesheet" href="${rc.contextPath}/statics/libs/nprogress/nprogress.css"/>
+	<script src="${rc.contextPath}/statics/libs/nprogress/nprogress.js"></script>
 	<script>
     $('body').show();
     NProgress.settings.parent = "${parentName!"body"}";

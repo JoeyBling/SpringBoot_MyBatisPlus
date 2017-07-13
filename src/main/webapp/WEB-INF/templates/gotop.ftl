@@ -1,7 +1,7 @@
 [#-- 滚动顶部插件 --]
-<link href="${base}/statics/libs/gotop/gotop.css" media="all" rel="stylesheet"
+<link href="${rc.contextPath}/statics/libs/gotop/gotop.css" media="all" rel="stylesheet"
           type="text/css">
-<script src="${base}/statics/libs/gotop/gotop.js"></script>
+<script src="${rc.contextPath}/statics/libs/gotop/gotop.js"></script>
 <a href="#0" class="cd-top">Top</a>
 <script>
 	$(function(){

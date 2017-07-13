@@ -108,7 +108,7 @@ wstro
 			seo.description 网页描述  (如果是中文，请进行Unicode转码  http://tool.chinaz.com/tools/unicode.aspx)
 		
 		server.port 服务端口  (部署在Tomcat上以Tomcat为准)
-		server.contextPath 服务器上文文路径 请和servlet.contextPath统一   (部署在Tomcat上以Tomcat为准)
+		server.contextPath 服务器上下文路径 (部署在Tomcat上以Tomcat为准)
 		
 		spring.mail 设置邮件的端口 账号及密码
 		

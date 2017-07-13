@@ -21,9 +21,6 @@ import freemarker.template.TemplateModelException;
 @org.springframework.context.annotation.Configuration
 public class FreeMarkerConfig {
 
-	@Value("${servlet.contextPath}")
-	private String contextPath;
-
 	@Value("${seo.author}")
 	private String author;
 
@@ -42,7 +39,6 @@ public class FreeMarkerConfig {
 
 	@PostConstruct
 	public void setSharedVariable() throws TemplateModelException {
-		configuration.setSharedVariable("base", contextPath);
 		configuration.setSharedVariable("author", author);
 		configuration.setSharedVariable("keywords", keywords);
 		configuration.setSharedVariable("description", description);
