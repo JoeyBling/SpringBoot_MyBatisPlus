@@ -193,4 +193,12 @@ public class SysUserEntity implements Serializable {
 		this.avatarUrl = avatarUrl;
 	}
 
+	@Override
+	public String toString() {
+		return "SysUserEntity [userId=" + userId + ", username=" + username + ", sex=" + sex + ", email=" + email
+				+ ", mobile=" + mobile + ", lastLoginTime=" + lastLoginTime + ", lastLoginIp=" + lastLoginIp
+				+ ", avatarUrl=" + avatarUrl + ", status=" + status + ", createTime=" + createTime + ", roleIdList="
+				+ roleIdList + "]";
+	}
+
 }

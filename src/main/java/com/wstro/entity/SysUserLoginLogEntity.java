@@ -102,4 +102,10 @@ public class SysUserLoginLogEntity implements Serializable {
 		this.browser = browser;
 	}
 
+	@Override
+	public String toString() {
+		return "SysUserLoginLogEntity [logId=" + logId + ", loginTime=" + loginTime + ", loginIp=" + loginIp
+				+ ", userId=" + userId + ", operatingSystem=" + operatingSystem + ", browser=" + browser + "]";
+	}
+
 }

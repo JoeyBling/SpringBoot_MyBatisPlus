@@ -169,4 +169,11 @@ public class SysMenuEntity implements Serializable {
 	public void setList(List<?> list) {
 		this.list = list;
 	}
+
+	@Override
+	public String toString() {
+		return "SysMenuEntity [menuId=" + menuId + ", parentId=" + parentId + ", parentName=" + parentName + ", name="
+				+ name + ", url=" + url + ", perms=" + perms + ", type=" + type + ", icon=" + icon + ", orderNum="
+				+ orderNum + ", open=" + open + ", list=" + list + "]";
+	}
 }
