@@ -106,5 +106,16 @@ public interface SysUserService extends IService<SysUserEntity> {
 	 *            系统用户
 	 * @return 更新行数
 	 */
-	public int updateAvatar(SysUserEntity entity);
+	int updateAvatar(SysUserEntity entity);
+
+	/**
+	 * 根据用户ID更新用户状态
+	 * 
+	 * @param userId
+	 *            用户ID
+	 * @param status
+	 *            用户状态
+	 * @return 更新行数
+	 */
+	int updateStatus(Long userId, int status);
 }

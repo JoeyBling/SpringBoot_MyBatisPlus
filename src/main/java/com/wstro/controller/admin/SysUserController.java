@@ -162,6 +162,20 @@ public class SysUserController extends AbstractController {
 	}
 
 	/**
+	 * 修改用户状态
+	 */
+	@RequestMapping("/updateStatus")
+	@ResponseBody
+	@RequiresPermissions("sys:user:update")
+	public R updateStatus(Long userId, @RequestParam("state") Boolean status) {
+		int updateStatus = sysUserService.updateStatus(userId, status ? 1 : 0);
+		if (updateStatus > 0)
+			return R.ok();
+		else
+			return R.error("修改失败!");
+	}
+
+	/**
 	 * 删除用户
 	 */
 	@RequestMapping("/delete")

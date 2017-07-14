@@ -5,6 +5,7 @@
     [#include "/admin/header.ftl"]
     <link rel="stylesheet" href="${rc.contextPath}/statics/common/bootstrap-table/bootstrap-table.min.css"/>
     <link rel="stylesheet" href="${rc.contextPath}/statics/common/icheck/flat/green.css"/>
+    <link rel="stylesheet" href="${rc.contextPath}/statics/common/bootstrap-switch/css/bootstrap-switch.min.css"/>
 </head>
 <body class="gray-bg" style="display:none;">
 <div class="wrapper wrapper-content">
@@ -233,6 +234,7 @@
 <script src="${rc.contextPath}/statics/js/admin/sys/admin.js"></script>
 <!-- iCheck -->
 <script src="${rc.contextPath}/statics/common/icheck/icheck.min.js"></script>
+<script src="${rc.contextPath}/statics/common/bootstrap-switch/js/bootstrap-switch.min.js"></script>
 [#-- 邮箱自动补全 --]
 [#assign inputEmail="input[name='email']"][#-- INPUT元素--]
 [#assign form="#form"]

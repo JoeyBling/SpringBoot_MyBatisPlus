@@ -83,12 +83,66 @@ function formatStatus(value, row, index) {
 		return "";
 	}
 	if (value === 1) {
-		return '<span class="label label-primary">正常</span>';
+		return '<input type="checkbox" name="my-checkbox" data-userId="'
+				+ row.userId + '" checked>';
 	}
 	if (value === 0) {
-		return '<span class="label label-danger">禁用</span>';
+		return '<input type="checkbox" name="my-checkbox" data-userId="'
+				+ row.userId + '" >';
 	}
 }
+
+// 开关切换(确保在Dom元素加载后渲染)
+$("#table")
+		.on(
+				"load-success.bs.table",
+				function() {
+					$("input[name='my-checkbox']").bootstrapSwitch({
+						onText : "启用",
+						offText : "禁用",
+						size : "mini"
+					});
+					// Dom元素加载后才能绑定触发事件
+					$('input[name="my-checkbox"]')
+							.on(
+									'switchChange.bootstrapSwitch',
+									function(event, state) {
+										var index = layer.load(1, {
+											shade : [ 0.3, '#fff' ]
+										// 0.1透明度的白色背景
+										});
+										var userId = $(this)
+												.attr("data-userId");
+										if (userId == null) {
+											layer.close(index);
+											return false;
+										}
+										$
+												.ajax({
+													type : "POST",
+													url : 'user/updateStatus',
+													headers : {
+														'Content-Type' : 'application/x-www-form-urlencoded'
+													},
+													data : {
+														userId : userId,
+														state : state
+													},
+													success : function(r) {
+														layer.close(index);
+														if (r.code === 0) {
+														} else {
+															layer
+																	.alert(
+																			r.msg,
+																			{
+																				icon : 2
+																			});
+														}
+													}
+												});
+									});
+				});
 
 var handle = $("#handle");
 var data_update = $(handle).attr("data-update");

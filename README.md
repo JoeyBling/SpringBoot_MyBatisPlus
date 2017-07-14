@@ -1,29 +1,29 @@
 **项目结构** 
 ```
 wstro
-├─sql  项目SQL语句
+├──sql  项目SQL语句
 │ 
-├─App 项目启动类
+├──App 项目启动类
 │
-├─config 配置信息
+├──config 配置信息
 │
-├─controller 控制器
+├──controller 控制器
 │  ├─admin 后台管理员控制器
 │ 
-├─service 业务逻辑接口
+├──service 业务逻辑接口
 │  ├─impl 业务逻辑接口实现类
 │
-├─dao 数据访问接口
-├
-├─entity 数据持久化实体类
+├──dao 数据访问接口
 │
-├─datasources 多数据源工具类
+├──entity 数据持久化实体类
 │
-├─shiro Shiro验证框架
+├──datasources 多数据源工具类
+│
+├──shiro Shiro验证框架
 │ 
-├─task Quartz定时任务
+├──task Quartz定时任务
 │ 
-├─util 项目所用的的所有工具类
+├──util 项目所用的的所有工具类
 │  ├─FreeMarker 自定义FreeMarker标签
 │  
 ├──resources 

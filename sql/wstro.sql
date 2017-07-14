@@ -30,13 +30,13 @@ CREATE TABLE `sys_menu` (
   `icon` varchar(50) DEFAULT NULL COMMENT '菜单图标',
   `order_num` int(11) DEFAULT NULL COMMENT '排序',
   PRIMARY KEY (`menu_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8 COMMENT='菜单管理';
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 COMMENT='菜单管理';
 
 /*Data for the table `sys_menu` */
 
 insert  into `sys_menu`(`menu_id`,`parent_id`,`name`,`url`,`perms`,`type`,`icon`,`order_num`) values 
 (1,0,'系统管理','','',0,'fa fa-cog',0),
-(2,1,'管理员列表','admin/sys/user.html',NULL,1,'fa fa-user',1),
+(2,1,'管理员列表','admin/sys/admin.html','',1,'fa fa-user',1),
 (3,1,'角色管理','admin/sys/role.html',NULL,1,'fa fa-user-secret',2),
 (4,1,'菜单管理','admin/sys/menu.html',NULL,1,'fa fa-th-list',3),
 (5,2,'查看',NULL,'sys:user:list,sys:user:info',2,NULL,0),
@@ -80,21 +80,21 @@ CREATE TABLE `sys_role_menu` (
   `role_id` bigint(20) DEFAULT NULL COMMENT '角色ID',
   `menu_id` bigint(20) DEFAULT NULL COMMENT '菜单ID',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=241 DEFAULT CHARSET=utf8 COMMENT='角色与菜单对应关系';
+) ENGINE=InnoDB AUTO_INCREMENT=251 DEFAULT CHARSET=utf8 COMMENT='角色与菜单对应关系';
 
 /*Data for the table `sys_role_menu` */
 
 insert  into `sys_role_menu`(`id`,`role_id`,`menu_id`) values 
-(231,13,1),
-(232,13,2),
-(233,13,5),
-(234,13,6),
-(235,13,3),
-(236,13,9),
-(237,13,4),
-(238,13,13),
-(239,13,17),
-(240,13,18);
+(241,13,1),
+(242,13,2),
+(243,13,5),
+(244,13,6),
+(245,13,3),
+(246,13,9),
+(247,13,4),
+(248,13,13),
+(249,13,17),
+(250,13,18);
 
 /*Table structure for table `sys_user` */
 
@@ -119,9 +119,9 @@ CREATE TABLE `sys_user` (
 /*Data for the table `sys_user` */
 
 insert  into `sys_user`(`user_id`,`username`,`password`,`sex`,`email`,`mobile`,`last_login_time`,`last_login_ip`,`avatar_url`,`status`,`create_time`) values 
-(1,'admin','8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918',0,'2434387555@qq.com','13647910242',1499733831,'192.168.1.88','upload/adminAvatar/201707/1499675749475head.jpg',1,1498801511),
+(1,'admin','8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918',0,'2434387555@qq.com','13647910242',1500018856,'192.168.1.88','upload/adminAvatar/201707/1499675749475head.jpg',1,1498801511),
 (7,'lastone','d50b4c0cab140a3310e256d86fd3cd33c02f145635df4694e71df062c1679a8f',2,'asd@qq.com','13456465465',1499069279,'192.168.1.88','upload/adminAvatar/201707/1499675749475head.jpg',1,1499069190),
-(8,'joey','bfef4adc39f01b033fe749bb5f28f10b581fef319d34445d21a7bc63fe732fa3',2,'2434387555@qq.com','13647910412',1499670576,'192.168.1.88','upload/adminAvatar/201707/1499675749475head.jpg',1,1499410874);
+(8,'joey','bfef4adc39f01b033fe749bb5f28f10b581fef319d34445d21a7bc63fe732fa3',2,'2434387555@qq.com','13647910412',1499670576,'192.168.1.88','upload/adminAvatar/201707/1499675749475head.jpg',0,1499410874);
 
 /*Table structure for table `sys_user_login_log` */
 
@@ -135,7 +135,7 @@ CREATE TABLE `sys_user_login_log` (
   `operating_system` varchar(50) DEFAULT NULL COMMENT '操作系统',
   `browser` varchar(50) DEFAULT NULL COMMENT '浏览器',
   PRIMARY KEY (`log_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=368 DEFAULT CHARSET=utf8 COMMENT='用户登录表';
+) ENGINE=InnoDB AUTO_INCREMENT=402 DEFAULT CHARSET=utf8 COMMENT='用户登录表';
 
 /*Data for the table `sys_user_login_log` */
 
@@ -363,7 +363,41 @@ insert  into `sys_user_login_log`(`log_id`,`login_time`,`login_ip`,`user_id`,`op
 (364,1499676954,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
 (365,1499678029,'192.168.1.12',1,'WINDOWS_7','CHROME49'),
 (366,1499733831,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
-(367,1499736644,'192.168.1.12',1,'WINDOWS_7','CHROME49');
+(367,1499736644,'192.168.1.12',1,'WINDOWS_7','CHROME49'),
+(368,1499740053,'192.168.1.12',1,'WINDOWS_7','CHROME49'),
+(369,1499739950,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(370,1499751595,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(371,1499754490,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(372,1499754532,'192.168.1.88',1,'WINDOWS_7','CHROME51'),
+(373,1499754626,'192.168.1.88',1,'WINDOWS_7','CHROME'),
+(374,1499754671,'192.168.1.88',1,'WINDOWS_7','IE9'),
+(375,1499754889,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(376,1499755582,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(377,1499823697,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(378,1499824314,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(379,1499830448,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(380,1499830781,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(381,1499851241,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(382,1499911630,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(383,1499911942,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(384,1499912210,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(385,1499912417,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(386,1499912551,'192.168.1.88',1,'WINDOWS_7','IE9'),
+(387,1499913005,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(388,1499914224,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(389,1499914472,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(390,1499915663,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(391,1499918084,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(392,1499925822,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(393,1499936087,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(394,1499938281,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(395,1499938450,'192.168.1.88',1,'WINDOWS_7','IE9'),
+(396,1500012618,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(397,1500018058,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(398,1500018358,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(399,1500018527,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(400,1500018635,'192.168.1.88',1,'WINDOWS_7','CHROME49'),
+(401,1500018856,'192.168.1.88',1,'WINDOWS_7','CHROME49');
 
 /*Table structure for table `sys_user_role` */
 
@@ -374,14 +408,14 @@ CREATE TABLE `sys_user_role` (
   `user_id` bigint(20) DEFAULT NULL COMMENT '用户ID',
   `role_id` bigint(20) DEFAULT NULL COMMENT '角色ID',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=62 DEFAULT CHARSET=utf8 COMMENT='用户与角色对应关系';
+) ENGINE=InnoDB AUTO_INCREMENT=74 DEFAULT CHARSET=utf8 COMMENT='用户与角色对应关系';
 
 /*Data for the table `sys_user_role` */
 
 insert  into `sys_user_role`(`id`,`user_id`,`role_id`) values 
-(57,7,13),
-(58,1,13),
-(61,8,13);
+(62,1,13),
+(72,8,13),
+(73,7,13);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

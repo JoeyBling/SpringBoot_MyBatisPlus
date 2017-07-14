@@ -114,4 +114,9 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserDao, SysUserEntity> i
 		return update;
 	}
 
+	@Override
+	public int updateStatus(Long userId, int status) {
+		return dao.updateStatus(userId, status);
+	}
+
 }

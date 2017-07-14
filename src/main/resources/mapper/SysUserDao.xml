@@ -73,4 +73,13 @@
 		where user_id = #{userId}
 	</update>
 	
+	<update id="updateStatus">
+		update sys_user
+		<set>
+			<if test="status != null">`status` = #{status}, </if>
+		</set>
+		where user_id = #{userId}
+	</update>
+	
+	
 </mapper>

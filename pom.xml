@@ -256,7 +256,7 @@
 				<configuration>
 					<source>${maven.compiler.source}</source>
 					<target>${maven.compiler.source}</target>
-					<encoding>UTF-8</encoding>
+					<encoding>${maven.compiler.encoding}</encoding>
 					<compilerArguments>
 						<!-- <extdirs>${project.basedir}/src/main/webapp/WEB-INF/lib</extdirs> -->
 					</compilerArguments>

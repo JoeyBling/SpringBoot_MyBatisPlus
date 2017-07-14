@@ -3,6 +3,8 @@ package com.wstro.dao;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.wstro.entity.SysUserEntity;
 import com.wstro.util.BaseDao;
 
@@ -66,4 +68,15 @@ public interface SysUserDao extends BaseDao<SysUserEntity> {
 	 * @return int
 	 */
 	int updateAvatar(SysUserEntity entity);
+
+	/**
+	 * 根据用户ID更新用户状态
+	 * 
+	 * @param userId
+	 *            用户ID
+	 * @param status
+	 *            用户状态
+	 * @return 更新行数
+	 */
+	int updateStatus(@Param("userId") Long userId, @Param("status") int status);
 }
