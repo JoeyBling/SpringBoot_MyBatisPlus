@@ -1,0 +1,10 @@
+/.settings/
+/target/
+/.svn/
+*.class
+*.jar
+
+# Eclipse project files
+.classpath
+.project
+.DS_Store

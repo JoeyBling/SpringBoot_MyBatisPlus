@@ -123,6 +123,8 @@ $(function() {
 	});
 
 	function menuItem() {
+		$('.dropdown').removeClass('open');
+		
 		// 获取标识数据
 		var dataUrl = $(this).attr('href'), dataIndex = $(this).data('index'), menuName = $
 				.trim($(this).text()), flag = true;
