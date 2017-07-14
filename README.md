@@ -24,17 +24,17 @@ wstro
 ├─task Quartz定时任务
 │ 
 ├─util 项目所用的的所有工具类
-│  ├─freemaker 自定义FreeMaker标签
+│  ├─FreeMarker 自定义FreeMarker标签
 │  
 ├──resources 
 │  ├─mapper SQL对应的XML文件
-│  ├─templates FreeMaker模版
+│  ├─templates FreeMarker模版
 │  
 ├──webapp
 │  ├─statics 静态资源
 │  ├─upload 上传文件
 │  ├─WEB-INF
-│	├─templates 页面FreeMaker模版
+│	├─templates 页面FreeMarker模版
 
 ```
 <br> 
@@ -49,7 +49,7 @@ wstro
 - 定时器：Quartz
 - 数据库连接池：Druid
 - 日志管理：SLF4J、Log4j
-- 模版技术：FreeMaker
+- 模版技术：FreeMarker
 - 页面交互：BootStrap、Layer等
 <br> 
 
