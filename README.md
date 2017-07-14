@@ -59,6 +59,10 @@ wstro
 - 创建数据库wstro，数据库编码为UTF-8
 - 执行sql/wstro.sql文件，初始化数据
 - 修改application-dev.properties，更新MySQL账号和密码
+
+- 修改application-dev.properties,更改Redis连接信息
+- 如果不想要Redis服务,注解掉RedisConfig.java	的 @Configuration注解
+
 - Eclipse、IDEA运行App.java，则可启动项目
 - 项目访问路径：http://localhost:8088/wstro
 - 账号密码：admin/admin
