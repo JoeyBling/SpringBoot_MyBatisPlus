@@ -12,14 +12,12 @@ import org.springframework.data.redis.core.StringRedisTemplate;
  * @Email 2434387555@qq.com
  *
  */
-// @RunWith(SpringJUnit4ClassRunner.class)
-// @SpringBootTest(classes = App.class)
 public class RedisCacheTest {
 
 	@Resource
 	StringRedisTemplate stringRedisTemplate;
 
-	// @Test
+	//@Test
 	public void redisTest() throws Exception {
 		// 保存字符串
 		stringRedisTemplate.opsForValue().set("aaa", "111");

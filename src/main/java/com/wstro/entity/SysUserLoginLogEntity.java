@@ -7,6 +7,8 @@ import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
 import com.baomidou.mybatisplus.enums.IdType;
 
+import lombok.Data;
+
 /***
  * 用户登录日志
  * 
@@ -14,6 +16,7 @@ import com.baomidou.mybatisplus.enums.IdType;
  * @Email 2434387555@qq.com
  *
  */
+@Data
 @TableName("sys_user_login_log")
 public class SysUserLoginLogEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -53,59 +56,5 @@ public class SysUserLoginLogEntity implements Serializable {
 	 */
 	@TableField
 	private String browser;
-
-	public Long getLogId() {
-		return logId;
-	}
-
-	public void setLogId(Long logId) {
-		this.logId = logId;
-	}
-
-	public Long getLoginTime() {
-		return loginTime;
-	}
-
-	public void setLoginTime(Long loginTime) {
-		this.loginTime = loginTime;
-	}
-
-	public String getLoginIp() {
-		return loginIp;
-	}
-
-	public void setLoginIp(String loginIp) {
-		this.loginIp = loginIp;
-	}
-
-	public Long getUserId() {
-		return userId;
-	}
-
-	public void setUserId(Long userId) {
-		this.userId = userId;
-	}
-
-	public String getOperatingSystem() {
-		return operatingSystem;
-	}
-
-	public void setOperatingSystem(String operatingSystem) {
-		this.operatingSystem = operatingSystem;
-	}
-
-	public String getBrowser() {
-		return browser;
-	}
-
-	public void setBrowser(String browser) {
-		this.browser = browser;
-	}
-
-	@Override
-	public String toString() {
-		return "SysUserLoginLogEntity [logId=" + logId + ", loginTime=" + loginTime + ", loginIp=" + loginIp
-				+ ", userId=" + userId + ", operatingSystem=" + operatingSystem + ", browser=" + browser + "]";
-	}
 
 }

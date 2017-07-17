@@ -12,6 +12,8 @@ import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
 import com.baomidou.mybatisplus.enums.IdType;
 
+import lombok.Data;
+
 /**
  * 系统用户
  * 
@@ -19,6 +21,7 @@ import com.baomidou.mybatisplus.enums.IdType;
  * @Email 2434387555@qq.com
  *
  */
+@Data
 @TableName("sys_user")
 public class SysUserEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -72,7 +75,7 @@ public class SysUserEntity implements Serializable {
 	 */
 	@TableField
 	private String lastLoginIp;
-	
+
 	/**
 	 * 头像缩略图地址
 	 */
@@ -96,109 +99,5 @@ public class SysUserEntity implements Serializable {
 	 */
 	@TableField(exist = false)
 	private List<Long> roleIdList;
-
-	public Long getUserId() {
-		return userId;
-	}
-
-	public void setUserId(Long userId) {
-		this.userId = userId;
-	}
-
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public Integer getSex() {
-		return sex;
-	}
-
-	public void setSex(Integer sex) {
-		this.sex = sex;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getMobile() {
-		return mobile;
-	}
-
-	public void setMobile(String mobile) {
-		this.mobile = mobile;
-	}
-
-	public Long getLastLoginTime() {
-		return lastLoginTime;
-	}
-
-	public void setLastLoginTime(Long lastLoginTime) {
-		this.lastLoginTime = lastLoginTime;
-	}
-
-	public String getLastLoginIp() {
-		return lastLoginIp;
-	}
-
-	public void setLastLoginIp(String lastLoginIp) {
-		this.lastLoginIp = lastLoginIp;
-	}
-
-	public Integer getStatus() {
-		return status;
-	}
-
-	public void setStatus(Integer status) {
-		this.status = status;
-	}
-
-	public Long getCreateTime() {
-		return createTime;
-	}
-
-	public void setCreateTime(Long createTime) {
-		this.createTime = createTime;
-	}
-
-	public List<Long> getRoleIdList() {
-		return roleIdList;
-	}
-
-	public void setRoleIdList(List<Long> roleIdList) {
-		this.roleIdList = roleIdList;
-	}
-
-	public String getAvatarUrl() {
-		return avatarUrl;
-	}
-
-	public void setAvatarUrl(String avatarUrl) {
-		this.avatarUrl = avatarUrl;
-	}
-
-	@Override
-	public String toString() {
-		return "SysUserEntity [userId=" + userId + ", username=" + username + ", sex=" + sex + ", email=" + email
-				+ ", mobile=" + mobile + ", lastLoginTime=" + lastLoginTime + ", lastLoginIp=" + lastLoginIp
-				+ ", avatarUrl=" + avatarUrl + ", status=" + status + ", createTime=" + createTime + ", roleIdList="
-				+ roleIdList + "]";
-	}
 
 }
