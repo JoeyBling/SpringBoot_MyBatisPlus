@@ -1,6 +1,5 @@
 # SpringBoot集成MyBatisPlus
 
-
 > **GitHub：[https://github.com/JoeyBling/SpringBoot_MyBatisPlus](https://github.com/JoeyBling/SpringBoot_MyBatisPlus)**<br/>
 > **码云：[https://gitee.com/zhousiwei/springboot_mybatisplus](https://gitee.com/zhousiwei/springboot_mybatisplus)**<br/>
 > **欢迎使用和Star支持，如使用过程中碰到问题，可以提出Issue，我会尽力完善**
@@ -65,8 +64,8 @@ wstro
 - 修改**application-dev.properties**，更新MySQL账号和密码
 - 修改**application-dev.properties**，更改Redis连接信息
 - 如果不想要Redis服务,注解掉`RedisConfig.java`的`@Configuration`注解
-- Eclipse、IDEA运行App.java，则可启动项目
-- 项目访问路径：http://localhost:8080/admin
+- Eclipse、IDEA运行```App.java```，则可启动项目
+- 项目访问路径：http://localhost/admin
 - 账号密码：**admin/admin**
 - 多数据源配置：需要自己实现，参考`DataSourceConfig.java`
 

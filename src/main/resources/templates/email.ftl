@@ -20,9 +20,9 @@ p{margin:0;padding:0}
 <div class="notice">
     <div class="hint" style="margin-top:100px;">
         <p class="text-none">尊敬的${username}用户您好：</p>
-        <p>为了提供更好的服务，我们将于<strong class="red">2016年9月24日00:00-2016年9月26日00:00</strong>之间进行升级维护，在此期间网站将不能访问。</p>
+        <p>为了提供更好的服务，我们将于<strong class="red">2019年9月24日00:00-2019年9月26日00:00</strong>之间进行升级维护，在此期间网站将不能访问。</p>
         <p>感谢您的理解和支持。</p>
-        <p class="text-right mar20">2016-9-24</p>
+        <p class="text-right mar20">2019-9-24</p>
     </div>
 </div>
 </body>
