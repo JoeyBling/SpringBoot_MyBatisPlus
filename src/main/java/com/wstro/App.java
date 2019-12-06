@@ -21,8 +21,7 @@ import java.util.Collections;
  * @Email 2434387555@qq.com
  */
 @ServletComponentScan
-@SpringBootApplication
-@ComponentScan(basePackages = {"com.wstro"})
+@SpringBootApplication(scanBasePackages = {"com.wstro"})
 public class App extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
