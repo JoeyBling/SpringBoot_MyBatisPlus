@@ -60,8 +60,12 @@
     <!-- top menu -->
     <div class="top-menu">
         <a href="${rc.contextPath}/" class="with-tooltip" title="返回首页">返回首页</a> | <a href="javascript:history.back(-1)"
-                                                                    class="with-tooltip" title="返回上一页">返回上页</a> | <a
-            href="${rc.contextPath}/" class="with-tooltip" title="帮助中心">帮助中心</a> | <a href="${rc.contextPath}/" class="with-tooltip" title="联系我们">联系我们</a>
+                                                                                     class="with-tooltip" title="返回上一页">返回上页</a>
+        | <a
+                href="${rc.contextPath}/admin" class="with-tooltip" title="进入后台管理系统">进入后台管理系统</a> | <a
+                href="${rc.contextPath}/"
+                class="with-tooltip"
+                title="联系我们">联系我们</a>
     </div>
     <!-- top menu -->
 

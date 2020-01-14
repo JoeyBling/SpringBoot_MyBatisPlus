@@ -34,6 +34,18 @@ public class Constant {
     @Value("${database.adminId}")
     public Long adminId;
 
+    /**
+     * 默认管理员账号
+     */
+    @Value("${database.test.admin.name}")
+    public String defaultAdminName;
+
+    /**
+     * 管理员账号密码
+     */
+    @Value("${database.test.admin.pwd}")
+    public String defaultAdminPwd;
+
     public final String loginSessionAttr = "ADMINLOGINCOOKIEKEY";
 
     /**
