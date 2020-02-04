@@ -16,7 +16,7 @@
         <commons-lang.version>3.3.2</commons-lang.version>
         <quartz.version>2.3.0</quartz.version>
         <springboot-redis.version>1.3.3.RELEASE</springboot-redis.version>
-        <shiro.version>1.4.0</shiro.version>
+        <shiro.version>1.5.0</shiro.version>
         <mybatis-plus.version>2.0.8</mybatis-plus.version>
         <mybatisplus-spring-boot-starter.version>1.0.2</mybatisplus-spring-boot-starter.version>
         <spring-log4j.version>1.3.5.RELEASE</spring-log4j.version>
