@@ -39,7 +39,6 @@ public class SysUserControllerTest extends BaseAppShiroTest {
         log.info(status + "" + content);
     }
 
-
     /**
      * @throws Exception
      * @see org.springframework.transaction.interceptor.TransactionAspectSupport#invokeWithinTransaction(Method, Class, TransactionAspectSupport.InvocationCallback)
