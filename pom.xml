@@ -13,7 +13,7 @@
     <properties>
         <kaptcha.version>0.0.9</kaptcha.version>
         <commons-lang.version>3.3.2</commons-lang.version>
-        <quartz.version>2.3.0</quartz.version>
+        <quartz.version>2.3.2</quartz.version>
         <springboot-redis.version>1.3.3.RELEASE</springboot-redis.version>
         <shiro.version>1.4.2</shiro.version>
         <mybatis-plus.version>2.0.8</mybatis-plus.version>
